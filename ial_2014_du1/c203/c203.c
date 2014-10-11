@@ -79,7 +79,12 @@ void queueInit (tQueue* q) {
         queueError(QERR_INIT);
     else
     {
-
+        q->f_index=0;
+        q->b_index=0;
+        for(int i=0; i<MAX_QUEUE; i++)
+        {
+            q->arr[i]='*';
+        }
     }
 	  //solved = FALSE;                  /* V případě řešení, smažte tento řádek! */
 }
@@ -90,8 +95,8 @@ int nextIndex (int index) {
 ** Funkci implementujte jako jediný prikaz využívající operace '%'.
 ** Funkci nextIndex budete využívat v dalších implementovaných funkcích.
 */
-
-	  solved = FALSE;                  /* V případě řešení, smažte tento řádek! */
+    return ((index + 1) % QUEUE_SIZE);
+	 // solved = FALSE;                  /* V případě řešení, smažte tento řádek! */
 
 }
 
@@ -100,8 +105,8 @@ int queueEmpty (const tQueue* q) {
 ** Vrací nenulovou hodnotu, pokud je frona prázdná, jinak vrací hodnotu 0. 
 ** Funkci implementujte jako jediný příkaz.
 */
-
-	  solved = FALSE;                  /* V případě řešení, smažte tento řádek! */
+    return (q->f_index==q->b_index);
+	  //solved = FALSE;                  /* V případě řešení, smažte tento řádek! */
 }
 
 int queueFull (const tQueue* q) {
@@ -109,8 +114,8 @@ int queueFull (const tQueue* q) {
 ** Vrací nenulovou hodnotu, je-li fronra plná, jinak vrací hodnotu 0. 
 ** Funkci implementujte jako jediný příkaz s využitím pomocné funkce nextIndex.
 */
-
-	  solved = FALSE;                  /* V případě řešení, smažte tento řádek! */
+    return (q -> f_index == nextIndex(q -> b_index));
+	  //solved = FALSE;                  /* V případě řešení, smažte tento řádek! */
 }
 
 void queueFront (const tQueue* q, char* c) {
@@ -124,8 +129,13 @@ void queueFront (const tQueue* q, char* c) {
 **
 ** Při implementaci využijte dříve definované funkce queueEmpty.
 */
-
-	  solved = FALSE;                  /* V případě řešení, smažte tento řádek! */
+    if(queueEmpty(q))
+        queueError(QERR_FRONT);
+    else
+    {
+        *c=q->arr[q->f_index];
+    }
+	  //solved = FALSE;                  /* V případě řešení, smažte tento řádek! */
 }
 
 void queueRemove (tQueue* q) {
@@ -135,8 +145,13 @@ void queueRemove (tQueue* q) {
 ** Hodnotu na uvolněné pozici ve frontě nijak neošetřujte (nepřepisujte).
 ** Při implementaci využijte dříve definované funkce queueEmpty a nextIndex.
 */
-
-	  solved = FALSE;                  /* V případě řešení, smažte tento řádek! */
+    if(queueEmpty(q))
+        queueError(QERR_REMOVE);
+    else
+    {
+        q->f_index= nextIndex(q->f_index);
+    }
+	  //solved = FALSE;                  /* V případě řešení, smažte tento řádek! */
 }
 
 void queueGet (tQueue* q, char* c) {
@@ -147,8 +162,14 @@ void queueGet (tQueue* q, char* c) {
 ** Při implementaci využijte dříve definovaných funkcí queueEmpty,
 ** queueFront a queueRemove.
 */
-
-	  solved = FALSE;                  /* V případě řešení, smažte tento řádek! */
+    if(queueEmpty(q))
+        queueError(QERR_GET);
+    else
+    {
+        *c=q->arr[q->f_index];
+        queueRemove(q);
+    }
+	  //solved = FALSE;                  /* V případě řešení, smažte tento řádek! */
 }
 
 void queueUp (tQueue* q, char c) {
@@ -161,7 +182,13 @@ void queueUp (tQueue* q, char c) {
 **
 ** Při implementaci využijte dříve definovaných funkcí queueFull a nextIndex.
 */
-
-	  solved = FALSE;                  /* V případě řešení, smažte tento řádek! */
+    if(queueFull(q))
+        queueError(QERR_UP);
+    else
+    {
+        q->arr[q->b_index]=c;
+        q->b_index= nextIndex(q->b_index);
+    }
+	  //solved = FALSE;                  /* V případě řešení, smažte tento řádek! */
 }
 /* Konec příkladu c203.c */
