@@ -32,8 +32,8 @@
       <file leaf-file-name="c203.c" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/c203.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7960445" vertical-offset="2191" max-vertical-offset="3000">
-              <caret line="189" column="62" selection-start-line="189" selection-start-column="62" selection-end-line="189" selection-end-column="62" />
+            <state vertical-scroll-proportion="0.6106304" vertical-offset="2191" max-vertical-offset="3000">
+              <caret line="179" column="23" selection-start-line="179" selection-start-column="23" selection-end-line="179" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -137,6 +137,7 @@
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="FullScreen" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../c201" />
   </component>
   <component name="RunManager" selected="Application.c203">
     <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS="FALSE" PROJECT_NAME="c203" TARGET_NAME="c203" CONFIG_NAME="Debug">
@@ -350,8 +351,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/c203.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7960445" vertical-offset="2191" max-vertical-offset="3000">
-          <caret line="189" column="62" selection-start-line="189" selection-start-column="62" selection-end-line="189" selection-end-column="62" />
+        <state vertical-scroll-proportion="0.6106304" vertical-offset="2191" max-vertical-offset="3000">
+          <caret line="179" column="23" selection-start-line="179" selection-start-column="23" selection-end-line="179" selection-end-column="23" />
           <folding />
         </state>
       </provider>
