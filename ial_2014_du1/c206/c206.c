@@ -1,55 +1,55 @@
 	
 /* c206.c **********************************************************}
-{* TÃ©ma: DvousmÄ›rnÄ› vÃ¡zanÃ½ lineÃ¡rnÃ­ seznam
+{* Téma: Dvousmìrnì vázanı lineární seznam
 **
-**                   NÃ¡vrh a referenÄnÃ­ implementace: Bohuslav KÅ™ena, Å™Ã­jen 2001
-**                            PÅ™epracovanÃ© do jazyka C: Martin TuÄek, Å™Ã­jen 2004
-**                                            Ãšpravy: Bohuslav KÅ™ena, Å™Ã­jen 2014
+**                   Návrh a referenèní implementace: Bohuslav Køena, øíjen 2001
+**                            Pøepracované do jazyka C: Martin Tuèek, øíjen 2004
+**                                            Úpravy: Bohuslav Køena, øíjen 2014
 **
-** Implementujte abstraktnÃ­ datovÃ½ typ dvousmÄ›rnÄ› vÃ¡zanÃ½ lineÃ¡rnÃ­ seznam.
-** UÅ¾iteÄnÃ½m obsahem prvku seznamu je hodnota typu int.
-** Seznam bude jako datovÃ¡ abstrakce reprezentovÃ¡n promÄ›nnou
-** typu tDLList (DL znamenÃ¡ Double-Linked a slouÅ¾Ã­ pro odliÅ¡enÃ­
-** jmen konstant, typÅ¯ a funkcÃ­ od jmen u jednosmÄ›rnÄ› vÃ¡zanÃ©ho lineÃ¡rnÃ­ho
-** seznamu). Definici konstant a typÅ¯ naleznete v hlaviÄkovÃ©m souboru c206.h.
+** Implementujte abstraktní datovı typ dvousmìrnì vázanı lineární seznam.
+** U¾iteènım obsahem prvku seznamu je hodnota typu int.
+** Seznam bude jako datová abstrakce reprezentován promìnnou
+** typu tDLList (DL znamená Double-Linked a slou¾í pro odli¹ení
+** jmen konstant, typù a funkcí od jmen u jednosmìrnì vázaného lineárního
+** seznamu). Definici konstant a typù naleznete v hlavièkovém souboru c206.h.
 **
-** VaÅ¡Ã­m Ãºkolem je implementovat nÃ¡sledujÃ­cÃ­ operace, kterÃ© spolu
-** s vÃ½Å¡e uvedenou datovou ÄÃ¡stÃ­ abstrakce tvoÅ™Ã­ abstraktnÃ­ datovÃ½ typ
-** obousmÄ›rnÄ› vÃ¡zanÃ½ lineÃ¡rnÃ­ seznam:
+** Va¹ím úkolem je implementovat následující operace, které spolu
+** s vı¹e uvedenou datovou èástí abstrakce tvoøí abstraktní datovı typ
+** obousmìrnì vázanı lineární seznam:
 **
-**      DLInitList ...... inicializace seznamu pÅ™ed prvnÃ­m pouÅ¾itÃ­m,
-**      DLDisposeList ... zruÅ¡enÃ­ vÅ¡ech prvkÅ¯ seznamu,
-**      DLInsertFirst ... vloÅ¾enÃ­ prvku na zaÄÃ¡tek seznamu,
-**      DLInsertLast .... vloÅ¾enÃ­ prvku na konec seznamu, 
-**      DLFirst ......... nastavenÃ­ aktivity na prvnÃ­ prvek,
-**      DLLast .......... nastavenÃ­ aktivity na poslednÃ­ prvek, 
-**      DLCopyFirst ..... vracÃ­ hodnotu prvnÃ­ho prvku,
-**      DLCopyLast ...... vracÃ­ hodnotu poslednÃ­ho prvku, 
-**      DLDeleteFirst ... zruÅ¡Ã­ prvnÃ­ prvek seznamu,
-**      DLDeleteLast .... zruÅ¡Ã­ poslednÃ­ prvek seznamu, 
-**      DLPostDelete .... ruÅ¡Ã­ prvek za aktivnÃ­m prvkem,
-**      DLPreDelete ..... ruÅ¡Ã­ prvek pÅ™ed aktivnÃ­m prvkem, 
-**      DLPostInsert .... vloÅ¾Ã­ novÃ½ prvek za aktivnÃ­ prvek seznamu,
-**      DLPreInsert ..... vloÅ¾Ã­ novÃ½ prvek pÅ™ed aktivnÃ­ prvek seznamu,
-**      DLCopy .......... vracÃ­ hodnotu aktivnÃ­ho prvku,
-**      DLActualize ..... pÅ™epÃ­Å¡e obsah aktivnÃ­ho prvku novou hodnotou,
-**      DLSucc .......... posune aktivitu na dalÅ¡Ã­ prvek seznamu,
-**      DLPred .......... posune aktivitu na pÅ™edchozÃ­ prvek seznamu, 
-**      DLActive ........ zjiÅ¡Å¥uje aktivitu seznamu.
+**      DLInitList ...... inicializace seznamu pøed prvním pou¾itím,
+**      DLDisposeList ... zru¹ení v¹ech prvkù seznamu,
+**      DLInsertFirst ... vlo¾ení prvku na zaèátek seznamu,
+**      DLInsertLast .... vlo¾ení prvku na konec seznamu, 
+**      DLFirst ......... nastavení aktivity na první prvek,
+**      DLLast .......... nastavení aktivity na poslední prvek, 
+**      DLCopyFirst ..... vrací hodnotu prvního prvku,
+**      DLCopyLast ...... vrací hodnotu posledního prvku, 
+**      DLDeleteFirst ... zru¹í první prvek seznamu,
+**      DLDeleteLast .... zru¹í poslední prvek seznamu, 
+**      DLPostDelete .... ru¹í prvek za aktivním prvkem,
+**      DLPreDelete ..... ru¹í prvek pøed aktivním prvkem, 
+**      DLPostInsert .... vlo¾í novı prvek za aktivní prvek seznamu,
+**      DLPreInsert ..... vlo¾í novı prvek pøed aktivní prvek seznamu,
+**      DLCopy .......... vrací hodnotu aktivního prvku,
+**      DLActualize ..... pøepí¹e obsah aktivního prvku novou hodnotou,
+**      DLSucc .......... posune aktivitu na dal¹í prvek seznamu,
+**      DLPred .......... posune aktivitu na pøedchozí prvek seznamu, 
+**      DLActive ........ zji¹»uje aktivitu seznamu.
 **
-** PÅ™i implementaci jednotlivÃ½ch funkcÃ­ nevolejte Å¾Ã¡dnou z funkcÃ­
-** implementovanÃ½ch v rÃ¡mci tohoto pÅ™Ã­kladu, nenÃ­-li u funkce
-** explicitnÄ› uvedeno nÄ›co jinÃ©ho.
+** Pøi implementaci jednotlivıch funkcí nevolejte ¾ádnou z funkcí
+** implementovanıch v rámci tohoto pøíkladu, není-li u funkce
+** explicitnì uvedeno nìco jiného.
 **
-** NemusÃ­te oÅ¡etÅ™ovat situaci, kdy mÃ­sto legÃ¡lnÃ­ho ukazatele na seznam 
-** pÅ™edÃ¡ nÄ›kdo jako parametr hodnotu NULL.
+** Nemusíte o¹etøovat situaci, kdy místo legálního ukazatele na seznam 
+** pøedá nìkdo jako parametr hodnotu NULL.
 **
-** Svou implementaci vhodnÄ› komentujte!
+** Svou implementaci vhodnì komentujte!
 **
-** TerminologickÃ¡ poznÃ¡mka: Jazyk C nepouÅ¾Ã­vÃ¡ pojem procedura.
-** Proto zde pouÅ¾Ã­vÃ¡me pojem funkce i pro operace, kterÃ© by byly
-** v algoritmickÃ©m jazyce PascalovskÃ©ho typu implemenovÃ¡ny jako
-** procedury (v jazyce C procedurÃ¡m odpovÃ­dajÃ­ funkce vracejÃ­cÃ­ typ void).
+** Terminologická poznámka: Jazyk C nepou¾ívá pojem procedura.
+** Proto zde pou¾íváme pojem funkce i pro operace, které by byly
+** v algoritmickém jazyce Pascalovského typu implemenovány jako
+** procedury (v jazyce C procedurám odpovídají funkce vracející typ void).
 **/
 
 #include "c206.h"
@@ -59,328 +59,328 @@ int errflg;
 
 void DLError() {
 /*
-** Vytiskne upozornÄ›nÃ­ na to, Å¾e doÅ¡lo k chybÄ›.
-** Tato funkce bude volÃ¡na z nÄ›kterÃ½ch dÃ¡le implementovanÃ½ch operacÃ­.
+** Vytiskne upozornìní na to, ¾e do¹lo k chybì.
+** Tato funkce bude volána z nìkterıch dále implementovanıch operací.
 **/	
     printf ("*ERROR* The program has performed an illegal operation.\n");
-    errflg = TRUE;             /* globÃ¡lnÃ­ promÄ›nnÃ¡ -- pÅ™Ã­znak oÅ¡etÅ™enÃ­ chyby */
+    errflg = TRUE;             /* globální promìnná -- pøíznak o¹etøení chyby */
     return;
 }
 
 void DLInitList (tDLList *L) {
 /*
-** Provede inicializaci seznamu L pÅ™ed jeho prvnÃ­m pouÅ¾itÃ­m (tzn. Å¾Ã¡dnÃ¡
-** z nÃ¡sledujÃ­cÃ­ch funkcÃ­ nebude volÃ¡na nad neinicializovanÃ½m seznamem).
-** Tato inicializace se nikdy nebude provÃ¡dÄ›t nad jiÅ¾ inicializovanÃ½m
-** seznamem, a proto tuto moÅ¾nost neoÅ¡etÅ™ujte. VÅ¾dy pÅ™edpoklÃ¡dejte,
-** Å¾e neinicializovanÃ© promÄ›nnÃ© majÃ­ nedefinovanou hodnotu.
+** Provede inicializaci seznamu L pøed jeho prvním pou¾itím (tzn. ¾ádná
+** z následujících funkcí nebude volána nad neinicializovanım seznamem).
+** Tato inicializace se nikdy nebude provádìt nad ji¾ inicializovanım
+** seznamem, a proto tuto mo¾nost neo¹etøujte. V¾dy pøedpokládejte,
+** ¾e neinicializované promìnné mají nedefinovanou hodnotu.
 **/
     
 	L->Act=NULL;
     L->First=NULL;
     L->Last=NULL;
- //solved = FALSE;                   /* V pÅ™Ã­padÄ› Å™eÅ¡enÃ­, smaÅ¾te tento Å™Ã¡dek! */
+ //solved = FALSE;                   /* V pøípadì øe¹ení, sma¾te tento øádek! */
 }
 
 void DLDisposeList (tDLList *L) {
 /*
-** ZruÅ¡Ã­ vÅ¡echny prvky seznamu L a uvede seznam do stavu, v jakÃ©m
-** se nachÃ¡zel po inicializaci. RuÅ¡enÃ© prvky seznamu budou korektnÄ›
-** uvolnÄ›ny volÃ¡nÃ­m operace free. 
+** Zru¹í v¹echny prvky seznamu L a uvede seznam do stavu, v jakém
+** se nacházel po inicializaci. Ru¹ené prvky seznamu budou korektnì
+** uvolnìny voláním operace free. 
 **/
 	tDLElemPtr elementPtr;
-    L->Act=L->First;            //nastavÃ­me aktuÃ¡lnÃ­ prvek na prvnÃ­
-	while(L->Act!=NULL)         //maÅ¾eme dokud je co
+    L->Act=L->First;            //nastavíme aktuální prvek na první
+	while(L->Act!=NULL)         //ma¾eme dokud je co
     {
-        elementPtr = L->Act;    //uloÅ¾Ã­me si ukazatel na aktuÃ¡lnÃ­
-        L->Act=L->Act->rptr;    //posuneme se na dalÅ¡Ã­ prvek
-        free(elementPtr);       //a uloÅ¾enÃ½ prvek uvolnÃ­me
+        elementPtr = L->Act;    //ulo¾íme si ukazatel na aktuální
+        L->Act=L->Act->rptr;    //posuneme se na dal¹í prvek
+        free(elementPtr);       //a ulo¾enı prvek uvolníme
     }
-    L->Last=NULL;               //na konci by mÄ›lo bÃ½t vÅ¡echno null
+    L->Last=NULL;               //na konci by mìlo bıt v¹echno null
     L->First=NULL;
     L->Act=NULL;
- //solved = FALSE;                   /* V pÅ™Ã­padÄ› Å™eÅ¡enÃ­, smaÅ¾te tento Å™Ã¡dek! */
+ //solved = FALSE;                   /* V pøípadì øe¹ení, sma¾te tento øádek! */
 }
 
 void DLInsertFirst (tDLList *L, int val) {
 /*
-** VloÅ¾Ã­ novÃ½ prvek na zaÄÃ¡tek seznamu L.
-** V pÅ™Ã­padÄ›, Å¾e nenÃ­ dostatek pamÄ›ti pro novÃ½ prvek pÅ™i operaci malloc,
-** volÃ¡ funkci DLError().
+** Vlo¾í novı prvek na zaèátek seznamu L.
+** V pøípadì, ¾e není dostatek pamìti pro novı prvek pøi operaci malloc,
+** volá funkci DLError().
 **/
 	struct tDLElem *element;
-    if((element= malloc(sizeof(struct tDLElem)))==NULL) //pro pÅ™Ã­pad, Å¾e by selhala alokace pamÄ›ti
+    if((element= malloc(sizeof(struct tDLElem)))==NULL) //pro pøípad, ¾e by selhala alokace pamìti
         DLError();
     else
     {
-        element -> data = val;              //uloÅ¾Ã­me do novÃ©ho prvku data
-        element -> rptr = L -> First;       //a taky pointer na souÄasnÃ½ prvnÃ­
-        element -> lptr = NULL;             //vlevo od nÄ›j nebude nic (je prvnÃ­)
-        if(L -> First != NULL)              //jestliÅ¾e je sÃ¡m ve frontÄ›, tak prvnÃ­ a poslednÃ­ je totÃ©Å¾, jiank souÄasnÃ½ prvnÃ­ (a za chvÃ­li druhÃ½) ukazuje na novÃ½ prvnÃ­ prvek
+        element -> data = val;              //ulo¾íme do nového prvku data
+        element -> rptr = L -> First;       //a taky pointer na souèasnı první
+        element -> lptr = NULL;             //vlevo od nìj nebude nic (je první)
+        if(L -> First != NULL)              //jestli¾e je sám ve frontì, tak první a poslední je toté¾, jiank souèasnı první (a za chvíli druhı) ukazuje na novı první prvek
             L -> First -> lptr = element;
         else
             L -> Last = L -> First = element;
-        L -> First = element;               //vloÅ¾Ã­me novÃ½ prvnÃ­ do seznamu
+        L -> First = element;               //vlo¾íme novı první do seznamu
     }
 	
- //solved = FALSE;                   /* V pÅ™Ã­padÄ› Å™eÅ¡enÃ­, smaÅ¾te tento Å™Ã¡dek! */
+ //solved = FALSE;                   /* V pøípadì øe¹ení, sma¾te tento øádek! */
 }
 
 void DLInsertLast(tDLList *L, int val) {
 /*
-** VloÅ¾Ã­ novÃ½ prvek na konec seznamu L (symetrickÃ¡ operace k DLInsertFirst).
-** V pÅ™Ã­padÄ›, Å¾e nenÃ­ dostatek pamÄ›ti pro novÃ½ prvek pÅ™i operaci malloc,
-** volÃ¡ funkci DLError().
+** Vlo¾í novı prvek na konec seznamu L (symetrická operace k DLInsertFirst).
+** V pøípadì, ¾e není dostatek pamìti pro novı prvek pøi operaci malloc,
+** volá funkci DLError().
 **/
     struct tDLElem *element;
     if((element= malloc(sizeof(struct tDLElem)))==NULL) //kontrola na chyby alokace
         DLError();
     else
     {
-        element -> data = val;                  //uloÅ¾Ã­me hodnotu
-        element -> lptr = L -> Last;            //vlevo je souÄasnÃ½ poslednÃ­
+        element -> data = val;                  //ulo¾íme hodnotu
+        element -> lptr = L -> Last;            //vlevo je souèasnı poslední
         element -> rptr = NULL;                 //vpravo nic
-        if(L -> Last != NULL)                   //kdyÅ¾ je ve frontÄ› sÃ¡m, prvnÃ­ a poslednÃ­ je totÃ©Å¾, kdyÅ¾ nenÃ­ sÃ¡m, vpravo od poslednÃ­ho bude novÃ½ prvek
+        if(L -> Last != NULL)                   //kdy¾ je ve frontì sám, první a poslední je toté¾, kdy¾ není sám, vpravo od posledního bude novı prvek
             L -> Last -> rptr = element;
         else
             L -> First = L -> Last = element;
-        L -> Last = element;                    //a vloÅ¾Ã­me na poslednÃ­ mÃ­sto
+        L -> Last = element;                    //a vlo¾íme na poslední místo
     }
 	
- //solved = FALSE;                   /* V pÅ™Ã­padÄ› Å™eÅ¡enÃ­, smaÅ¾te tento Å™Ã¡dek! */
+ //solved = FALSE;                   /* V pøípadì øe¹ení, sma¾te tento øádek! */
 }
 
 void DLFirst (tDLList *L) {
 /*
-** NastavÃ­ aktivitu na prvnÃ­ prvek seznamu L.
-** Funkci implementujte jako jedinÃ½ pÅ™Ã­kaz (nepoÄÃ­tÃ¡me-li return),
-** aniÅ¾ byste testovali, zda je seznam L prÃ¡zdnÃ½.
+** Nastaví aktivitu na první prvek seznamu L.
+** Funkci implementujte jako jedinı pøíkaz (nepoèítáme-li return),
+** ani¾ byste testovali, zda je seznam L prázdnı.
 **/
 	L->Act=L->First;
 
- //solved = FALSE;                   /* V pÅ™Ã­padÄ› Å™eÅ¡enÃ­, smaÅ¾te tento Å™Ã¡dek! */
+ //solved = FALSE;                   /* V pøípadì øe¹ení, sma¾te tento øádek! */
 }
 
 void DLLast (tDLList *L) {
 /*
-** NastavÃ­ aktivitu na poslednÃ­ prvek seznamu L.
-** Funkci implementujte jako jedinÃ½ pÅ™Ã­kaz (nepoÄÃ­tÃ¡me-li return),
-** aniÅ¾ byste testovali, zda je seznam L prÃ¡zdnÃ½.
+** Nastaví aktivitu na poslední prvek seznamu L.
+** Funkci implementujte jako jedinı pøíkaz (nepoèítáme-li return),
+** ani¾ byste testovali, zda je seznam L prázdnı.
 **/
 	L->Act=L->Last;
 	
- //solved = FALSE;                   /* V pÅ™Ã­padÄ› Å™eÅ¡enÃ­, smaÅ¾te tento Å™Ã¡dek! */
+ //solved = FALSE;                   /* V pøípadì øe¹ení, sma¾te tento øádek! */
 }
 
 void DLCopyFirst (tDLList *L, int *val) {
 /*
-** ProstÅ™ednictvÃ­m parametru val vrÃ¡tÃ­ hodnotu prvnÃ­ho prvku seznamu L.
-** Pokud je seznam L prÃ¡zdnÃ½, volÃ¡ funkci DLError().
+** Prostøednictvím parametru val vrátí hodnotu prvního prvku seznamu L.
+** Pokud je seznam L prázdnı, volá funkci DLError().
 **/
-    if(L->First==NULL)  //kontrola prÃ¡zdnosti
+    if(L->First==NULL)  //kontrola prázdnosti
         DLError();
     else
     {
-        *val = L->First->data;  //vrÃ¡cenÃ­ hodnoty
+        *val = L->First->data;  //vrácení hodnoty
     }
 	
 	
- //solved = FALSE;                   /* V pÅ™Ã­padÄ› Å™eÅ¡enÃ­, smaÅ¾te tento Å™Ã¡dek! */
+ //solved = FALSE;                   /* V pøípadì øe¹ení, sma¾te tento øádek! */
 }
 
 void DLCopyLast (tDLList *L, int *val) {
 /*
-** ProstÅ™ednictvÃ­m parametru val vrÃ¡tÃ­ hodnotu poslednÃ­ho prvku seznamu L.
-** Pokud je seznam L prÃ¡zdnÃ½, volÃ¡ funkci DLError().
+** Prostøednictvím parametru val vrátí hodnotu posledního prvku seznamu L.
+** Pokud je seznam L prázdnı, volá funkci DLError().
 **/
 
-    if(L->Last==NULL)   //kontroloa prÃ¡zdnosti
+    if(L->Last==NULL)   //kontroloa prázdnosti
         DLError();
     else
     {
-        *val = L->Last->data;       //vrÃ¡cenÃ­ hodnoty
+        *val = L->Last->data;       //vrácení hodnoty
     }
- //solved = FALSE;                   /* V pÅ™Ã­padÄ› Å™eÅ¡enÃ­, smaÅ¾te tento Å™Ã¡dek! */
+ //solved = FALSE;                   /* V pøípadì øe¹ení, sma¾te tento øádek! */
 }
 
 void DLDeleteFirst (tDLList *L) {
 /*
-** ZruÅ¡Ã­ prvnÃ­ prvek seznamu L. Pokud byl prvnÃ­ prvek aktivnÃ­, aktivita 
-** se ztrÃ¡cÃ­. Pokud byl seznam L prÃ¡zdnÃ½, nic se nedÄ›je.
+** Zru¹í první prvek seznamu L. Pokud byl první prvek aktivní, aktivita 
+** se ztrácí. Pokud byl seznam L prázdnı, nic se nedìje.
 **/
-	if(L->First==NULL)              //kontrola prÃ¡zdnosti
+	if(L->First==NULL)              //kontrola prázdnosti
         return;
-    if(L->First==L->Act)            //kontrola prvnÃ­=aktivnÃ­
+    if(L->First==L->Act)            //kontrola první=aktivní
         L->Act=NULL;
-    tDLElemPtr firstPtr = L->First; //uloÅ¾enÃ­ prvnÃ­ho
-    L->First=L->First->rptr;        //pÅ™esmÄ›rovÃ¡nÃ­ prvnÃ­ho
-    L->First->lptr=NULL;            //umazÃ¡nÃ­ poimteru na bÃ½valÃ½ prvnÃ­
-    free(firstPtr);                 //a jeho uvolnÄ›nÃ­
+    tDLElemPtr firstPtr = L->First; //ulo¾ení prvního
+    L->First=L->First->rptr;        //pøesmìrování prvního
+    L->First->lptr=NULL;            //umazání poimteru na bıvalı první
+    free(firstPtr);                 //a jeho uvolnìní
 	
- //solved = FALSE;                   /* V pÅ™Ã­padÄ› Å™eÅ¡enÃ­, smaÅ¾te tento Å™Ã¡dek! */
+ //solved = FALSE;                   /* V pøípadì øe¹ení, sma¾te tento øádek! */
 }	
 
 void DLDeleteLast (tDLList *L) {
 /*
-** ZruÅ¡Ã­ poslednÃ­ prvek seznamu L. Pokud byl poslednÃ­ prvek aktivnÃ­,
-** aktivita seznamu se ztrÃ¡cÃ­. Pokud byl seznam L prÃ¡zdnÃ½, nic se nedÄ›je.
+** Zru¹í poslední prvek seznamu L. Pokud byl poslední prvek aktivní,
+** aktivita seznamu se ztrácí. Pokud byl seznam L prázdnı, nic se nedìje.
 **/
-    if(L->First==NULL)              //kontrola prÃ¡zdnosti
+    if(L->First==NULL)              //kontrola prázdnosti
         return;
     if(L->Last==L->Act)             //kontrola aktivity
         L->Act=NULL;
 	tDLElemPtr lastPtr = L->Last;
-    L->Last = L->Last->lptr;        //pÅ™esmÄ›rovÃ¡nÃ­ poslednÃ­ho
-    L->Last->rptr=NULL;             //smazÃ¡nÃ­ pointeru na starÃ½ poslednÃ­
-    free(lastPtr);                  //a jeho uvolnÄ›nÃ­
- //solved = FALSE;                   /* V pÅ™Ã­padÄ› Å™eÅ¡enÃ­, smaÅ¾te tento Å™Ã¡dek! */
+    L->Last = L->Last->lptr;        //pøesmìrování posledního
+    L->Last->rptr=NULL;             //smazání pointeru na starı poslední
+    free(lastPtr);                  //a jeho uvolnìní
+ //solved = FALSE;                   /* V pøípadì øe¹ení, sma¾te tento øádek! */
 }
 
 void DLPostDelete (tDLList *L) {
 /*
-** ZruÅ¡Ã­ prvek seznamu L za aktivnÃ­m prvkem.
-** Pokud je seznam L neaktivnÃ­ nebo pokud je aktivnÃ­ prvek
-** poslednÃ­m prvkem seznamu, nic se nedÄ›je.
+** Zru¹í prvek seznamu L za aktivním prvkem.
+** Pokud je seznam L neaktivní nebo pokud je aktivní prvek
+** posledním prvkem seznamu, nic se nedìje.
 **/
     if(L -> Act != NULL && L -> Act -> rptr != NULL)    //kontrola aktivity a poslednosti
     {
         tDLElemPtr element;
-        element = L -> Act -> rptr;                     //zÃ­skÃ¡nÃ­ nÃ¡sledujÃ­cÃ­ho prvku
-        L -> Act -> rptr = element -> rptr;             //pÅ™epojenÃ­ seznamu
-        if(element -> rptr == NULL)                     //oÅ¡etÅ™enÃ­ poslednÃ­ho prvku
-            L -> Last= L -> Act;                        //poslednÃ­ se stÃ¡vÃ¡ akutÃ¡lnÃ­m
+        element = L -> Act -> rptr;                     //získání následujícího prvku
+        L -> Act -> rptr = element -> rptr;             //pøepojení seznamu
+        if(element -> rptr == NULL)                     //o¹etøení posledního prvku
+            L -> Last= L -> Act;                        //poslední se stává akutálním
         else
-            element -> rptr -> lptr = L -> Act;         //nebo pÅ™epojenÃ­ aktuÃ¡lnÃ­ho prvku
-        free(element);                                  //a uvolnÄ›nÃ­
+            element -> rptr -> lptr = L -> Act;         //nebo pøepojení aktuálního prvku
+        free(element);                                  //a uvolnìní
     }
 		
- //solved = FALSE;                   /* V pÅ™Ã­padÄ› Å™eÅ¡enÃ­, smaÅ¾te tento Å™Ã¡dek! */
+ //solved = FALSE;                   /* V pøípadì øe¹ení, sma¾te tento øádek! */
 }
 
 void DLPreDelete (tDLList *L) {
 /*
-** ZruÅ¡Ã­ prvek pÅ™ed aktivnÃ­m prvkem seznamu L .
-** Pokud je seznam L neaktivnÃ­ nebo pokud je aktivnÃ­ prvek
-** prvnÃ­m prvkem seznamu, nic se nedÄ›je.
+** Zru¹í prvek pøed aktivním prvkem seznamu L .
+** Pokud je seznam L neaktivní nebo pokud je aktivní prvek
+** prvním prvkem seznamu, nic se nedìje.
 **/
     if(L -> Act != NULL && L -> Act -> lptr != NULL)    //kontrola aktivity a prvosti
     {
         tDLElemPtr element;
-        element = L -> Act -> lptr;                     //zÃ­skÃ¡nÃ­ pÅ™edchozÃ­ho prvku
-        L -> Act -> lptr = element -> lptr;             //pÅ™epojenÃ­ seznamu
-        if(element -> lptr == NULL)                     //pokud pÅ™ed uvolnovanÃ½m prvkem nic nenÃ­, tak se prvnÃ­ rovnÃ¡ aktuÃ¡lnÃ­mu
+        element = L -> Act -> lptr;                     //získání pøedchozího prvku
+        L -> Act -> lptr = element -> lptr;             //pøepojení seznamu
+        if(element -> lptr == NULL)                     //pokud pøed uvolnovanım prvkem nic není, tak se první rovná aktuálnímu
             L -> First= L -> Act;
         else
-            element -> lptr -> rptr = L -> Act;         //jinak se seznam provÃ¡Å¾e
-        free(element);                                  //a uvolnÄ›nÃ­
+            element -> lptr -> rptr = L -> Act;         //jinak se seznam prová¾e
+        free(element);                                  //a uvolnìní
     }
 
- //solved = FALSE;                   /* V pÅ™Ã­padÄ› Å™eÅ¡enÃ­, smaÅ¾te tento Å™Ã¡dek! */
+ //solved = FALSE;                   /* V pøípadì øe¹ení, sma¾te tento øádek! */
 }
 
 void DLPostInsert (tDLList *L, int val) {
 /*
-** VloÅ¾Ã­ prvek za aktivnÃ­ prvek seznamu L.
-** Pokud nebyl seznam L aktivnÃ­, nic se nedÄ›je.
-** V pÅ™Ã­padÄ›, Å¾e nenÃ­ dostatek pamÄ›ti pro novÃ½ prvek pÅ™i operaci malloc,
-** volÃ¡ funkci DLError().
+** Vlo¾í prvek za aktivní prvek seznamu L.
+** Pokud nebyl seznam L aktivní, nic se nedìje.
+** V pøípadì, ¾e není dostatek pamìti pro novı prvek pøi operaci malloc,
+** volá funkci DLError().
 **/
 	if(L->Act==NULL)        //kontrola aktivity
         return;
     struct tDLElem *element;
     if((element= malloc(sizeof(struct tDLElem)))!=NULL) //kontrola alokace
     {
-        element->rptr=L->Act->rptr;         //navÃ¡zÃ¡nÃ­ zprava do novÃ©ho
-        element->rptr->lptr=element;        //navÃ¡zÃ¡nÃ­ zprava do seznamu
-        L->Act->rptr=element;               //navÃ¡zÃ¡nÃ­ zleva do seznamu
-        element->lptr=L->Act;               //navÃ¡zÃ¡nÃ­ zleva do novÃ©ho
-        element->data=val;                  //uloÅ¾enÃ­ hodnoty do novÃ©ho
+        element->rptr=L->Act->rptr;         //navázání zprava do nového
+        element->rptr->lptr=element;        //navázání zprava do seznamu
+        L->Act->rptr=element;               //navázání zleva do seznamu
+        element->lptr=L->Act;               //navázání zleva do nového
+        element->data=val;                  //ulo¾ení hodnoty do nového
     }
 	
- //solved = FALSE;                   /* V pÅ™Ã­padÄ› Å™eÅ¡enÃ­, smaÅ¾te tento Å™Ã¡dek! */
+ //solved = FALSE;                   /* V pøípadì øe¹ení, sma¾te tento øádek! */
 }
 
 void DLPreInsert (tDLList *L, int val) {
 /*
-** VloÅ¾Ã­ prvek pÅ™ed aktivnÃ­ prvek seznamu L.
-** Pokud nebyl seznam L aktivnÃ­, nic se nedÄ›je.
-** V pÅ™Ã­padÄ›, Å¾e nenÃ­ dostatek pamÄ›ti pro novÃ½ prvek pÅ™i operaci malloc,
-** volÃ¡ funkci DLError().
+** Vlo¾í prvek pøed aktivní prvek seznamu L.
+** Pokud nebyl seznam L aktivní, nic se nedìje.
+** V pøípadì, ¾e není dostatek pamìti pro novı prvek pøi operaci malloc,
+** volá funkci DLError().
 **/
     if(L->Act==NULL)    //kontrola aktivity
         return;
     struct tDLElem *element;
     if((element= malloc(sizeof(struct tDLElem)))!=NULL) //kontrola alokace
     {
-        element->lptr=L->Act->lptr;     //navÃ¡zÃ¡nÃ­ zleva do novÃ©ho
-        element->lptr->rptr=element;    //navÃ¡zÃ¡nÃ­ zleva do seznamu
-        L->Act->lptr=element;           //navÃ¡zÃ¡nÃ­ zprava do seznamu
-        element->rptr=L->Act;           //navÃ¡zÃ¡nÃ­ zprava do novÃ©ho
-        element->data=val;              //uloÅ¾enÃ­ hodnoty do novÃ©ho
+        element->lptr=L->Act->lptr;     //navázání zleva do nového
+        element->lptr->rptr=element;    //navázání zleva do seznamu
+        L->Act->lptr=element;           //navázání zprava do seznamu
+        element->rptr=L->Act;           //navázání zprava do nového
+        element->data=val;              //ulo¾ení hodnoty do nového
     }
 	
- //solved = FALSE;                   /* V pÅ™Ã­padÄ› Å™eÅ¡enÃ­, smaÅ¾te tento Å™Ã¡dek! */
+ //solved = FALSE;                   /* V pøípadì øe¹ení, sma¾te tento øádek! */
 }
 
 void DLCopy (tDLList *L, int *val) {
 /*
-** ProstÅ™ednictvÃ­m parametru val vrÃ¡tÃ­ hodnotu aktivnÃ­ho prvku seznamu L.
-** Pokud seznam L nenÃ­ aktivnÃ­, volÃ¡ funkci DLError ().
+** Prostøednictvím parametru val vrátí hodnotu aktivního prvku seznamu L.
+** Pokud seznam L není aktivní, volá funkci DLError ().
 **/
     if(L->Act==NULL)    //kontrola aktivity
         DLError();
     else
-        *val=L->Act->data;  //zÃ­skÃ¡nÃ­ hodnoty
+        *val=L->Act->data;  //získání hodnoty
 
 	
-// solved = FALSE;                   /* V pÅ™Ã­padÄ› Å™eÅ¡enÃ­, smaÅ¾te tento Å™Ã¡dek! */
+// solved = FALSE;                   /* V pøípadì øe¹ení, sma¾te tento øádek! */
 }
 
 void DLActualize (tDLList *L, int val) {
 /*
-** PÅ™epÃ­Å¡e obsah aktivnÃ­ho prvku seznamu L.
-** Pokud seznam L nenÃ­ aktivnÃ­, nedÄ›lÃ¡ nic.
+** Pøepí¹e obsah aktivního prvku seznamu L.
+** Pokud seznam L není aktivní, nedìlá nic.
 **/
 	if(L->Act==NULL)        //kontrola aktivity
         DLError();
     else
-        L->Act->data=val;      //vloÅ¾enÃ­ novÃ© hodnoty
+        L->Act->data=val;      //vlo¾ení nové hodnoty
 	
- //solved = FALSE;                   /* V pÅ™Ã­padÄ› Å™eÅ¡enÃ­, smaÅ¾te tento Å™Ã¡dek! */
+ //solved = FALSE;                   /* V pøípadì øe¹ení, sma¾te tento øádek! */
 }
 
 void DLSucc (tDLList *L) {
 /*
-** Posune aktivitu na nÃ¡sledujÃ­cÃ­ prvek seznamu L.
-** NenÃ­-li seznam aktivnÃ­, nedÄ›lÃ¡ nic.
-** VÅ¡imnÄ›te si, Å¾e pÅ™i aktivitÄ› na poslednÃ­m prvku se seznam stane neaktivnÃ­m.
+** Posune aktivitu na následující prvek seznamu L.
+** Není-li seznam aktivní, nedìlá nic.
+** V¹imnìte si, ¾e pøi aktivitì na posledním prvku se seznam stane neaktivním.
 **/
 	if(L->Act!=NULL)        //kontrola aktivity
-	    L->Act=L->Act->rptr;    //pÅ™esunutÃ­ aktivity vpravo
- //solved = FALSE;                   /* V pÅ™Ã­padÄ› Å™eÅ¡enÃ­, smaÅ¾te tento Å™Ã¡dek! */
+	    L->Act=L->Act->rptr;    //pøesunutí aktivity vpravo
+ //solved = FALSE;                   /* V pøípadì øe¹ení, sma¾te tento øádek! */
 }
 
 
 void DLPred (tDLList *L) {
 /*
-** Posune aktivitu na pÅ™edchozÃ­ prvek seznamu L.
-** NenÃ­-li seznam aktivnÃ­, nedÄ›lÃ¡ nic.
-** VÅ¡imnÄ›te si, Å¾e pÅ™i aktivitÄ› na prvnÃ­m prvku se seznam stane neaktivnÃ­m.
+** Posune aktivitu na pøedchozí prvek seznamu L.
+** Není-li seznam aktivní, nedìlá nic.
+** V¹imnìte si, ¾e pøi aktivitì na prvním prvku se seznam stane neaktivním.
 **/
 
     if(L->Act!=NULL)        //kontrola aktivity
-        L->Act=L->Act->lptr;    //pÅ™esunutÃ­ aktivity vlevo
- //solved = FALSE;                   /* V pÅ™Ã­padÄ› Å™eÅ¡enÃ­, smaÅ¾te tento Å™Ã¡dek! */
+        L->Act=L->Act->lptr;    //pøesunutí aktivity vlevo
+ //solved = FALSE;                   /* V pøípadì øe¹ení, sma¾te tento øádek! */
 }
 
 int DLActive (tDLList *L) {
 /*
-** Je-li seznam aktivnÃ­, vracÃ­ true. V opaÄnÃ©m pÅ™Ã­padÄ› vracÃ­ false.
-** Funkci implementujte jako jedinÃ½ pÅ™Ã­kaz.
+** Je-li seznam aktivní, vrací true. V opaèném pøípadì vrací false.
+** Funkci implementujte jako jedinı pøíkaz.
 **/
-    return L->Act!=NULL;    //je aktivnÃ­?
+    return L->Act!=NULL;    //je aktivní?
 	
- //solved = FALSE;                   /* V pÅ™Ã­padÄ› Å™eÅ¡enÃ­, smaÅ¾te tento Å™Ã¡dek! */
+ //solved = FALSE;                   /* V pøípadì øe¹ení, sma¾te tento øádek! */
 }
 
 /* Konec c206.c*/

@@ -1,9 +1,9 @@
 
 /*
- *  PÅ™edmÄ›t: Algoritmy (IAL) - FIT VUT v BrnÄ›
- *  ZÃ¡kladnÃ­ testy pro pÅ™Ã­klad c201.c (JednosmÄ›rnÄ› vÃ¡zanÃ½ lineÃ¡rnÃ­ seznam)
- *  VytvoÅ™il: Martin TuÄek, zÃ¡Å™Ã­ 2005
- *  Ãšprava: Bohuslav KÅ™ena, Å™Ã­jen 2009
+ *  Pøedmìt: Algoritmy (IAL) - FIT VUT v Brnì
+ *  Základní testy pro pøíklad c201.c (Jednosmìrnì vázanı lineární seznam)
+ *  Vytvoøil: Martin Tuèek, záøí 2005
+ *  Úprava: Bohuslav Køena, øíjen 2009
  */
 
 #include "c201.h"
@@ -13,7 +13,7 @@ int ElemValue;
 int MaxListLength = 100;                     /* Handles wrongly linked lists. */
 
 /*******************************************************************************
- * PomocnÃ© funkce usnadÅˆujÃ­cÃ­ testovÃ¡nÃ­ vlastnÃ­ implementace.
+ * Pomocné funkce usnadòující testování vlastní implementace.
  ******************************************************************************/
 
 void print_elements_of_list(tList TL)	{
@@ -24,7 +24,7 @@ void print_elements_of_list(tList TL)	{
 	while ((TempList.First!=NULL) && (CurrListLength<MaxListLength))	{
 		printf("\n\t %d",TempList.First->data);
 		if ((TempList.First==TL.Act) && (TL.Act!=NULL))
-			printf("\t <= toto je aktivnÃ­ prvek ");
+			printf("\t <= toto je aktivní prvek ");
 		TempList.First=TempList.First->ptr;	
 		CurrListLength++;
 	}
@@ -34,11 +34,11 @@ void print_elements_of_list(tList TL)	{
 }
 
 int use_copy(tList *TL, int *ElemValue)	{
-/* OÅ¡etÅ™uje pouÅ¾itÃ­ operace Copy. */
+/* O¹etøuje pou¾ití operace Copy. */
 	int tmp;	
 	Copy(TL,&tmp);
 	if (!solved) {
-		printf("Operace Copy nebyla implementovÃ¡na!\n");
+		printf("Operace Copy nebyla implementována!\n");
 		return(FALSE);
 	}
 	else {
@@ -49,19 +49,19 @@ int use_copy(tList *TL, int *ElemValue)	{
 		}	
 		else	{	 
 			*ElemValue=tmp;		
-			printf("Operace Copy vracÃ­ obsah %d.\n",tmp);
+			printf("Operace Copy vrací obsah %d.\n",tmp);
 			return(TRUE);
 		}	
 	}	
 }
 
 int use_copy_first(tList *TL, int *ElemValue)	{
-/* OÅ¡etÅ™uje pouÅ¾itÃ­ operace CopyFirst. */
+/* O¹etøuje pou¾ití operace CopyFirst. */
 	int tmp;
 	CopyFirst(TL,&tmp);
 	
 	if (!solved)	{
-		printf("Operace CopyFirst nebyla implementovÃ¡na!\n");
+		printf("Operace CopyFirst nebyla implementována!\n");
 		return(FALSE);
 	}
 	else {
@@ -72,29 +72,29 @@ int use_copy_first(tList *TL, int *ElemValue)	{
 		}	
 		else	{	 
 			*ElemValue=tmp;			
-			printf("Operace CopyFirst vracÃ­ obsah %d.\n",tmp);
+			printf("Operace CopyFirst vrací obsah %d.\n",tmp);
 			return(TRUE);
 		}	
 	}	
 }
 
 int use_active(tList TL)	{
-/* OÅ¡etÅ™uje pouÅ¾itÃ­ operace Active. */
+/* O¹etøuje pou¾ití operace Active. */
 	int IsActive = Active(&TL);
 	if (!solved)	{
-		printf("Operace Active nebyla implementovÃ¡na!\n");
+		printf("Operace Active nebyla implementována!\n");
 		return(FALSE);
 	}	
 	else	{
-		printf("Operace Active vracÃ­ %d.\n",IsActive);
+		printf("Operace Active vrací %d.\n",IsActive);
 		return(TRUE);
 	}	
 }	
 
 /*
- * NÃ¡sledujÃ­cÃ­ funkce volanÃ© z vlastnÃ­ch testÅ¯ uvedenÃ½ch ve funkci main
- * kontrolujÃ­, zda byly jednotlivÃ© funkce implementovÃ¡ny,
- * pÅ™Ã­padnÄ› vypisujÃ­ aktuÃ¡lnÃ­ stav pracovnÃ­ho seznamu TEMPLIST.
+ * Následující funkce volané z vlastních testù uvedenıch ve funkci main
+ * kontrolují, zda byly jednotlivé funkce implementovány,
+ * pøípadnì vypisují aktuální stav pracovního seznamu TEMPLIST.
  */ 
 
 int test_InitList()	{
@@ -131,7 +131,7 @@ int test_InsertFirst()	{
 	solved=TRUE;
 	InsertFirst(&TEMPLIST,ElemValue);
 	if (!solved)	{
-		printf("Operace InsertFirst nebyla implementovÃ¡na!\n");
+		printf("Operace InsertFirst nebyla implementována!\n");
 		return(FALSE);
 	}
 	else	{
@@ -146,7 +146,7 @@ int test_First()	{
 	solved=TRUE;
 	First(&TEMPLIST);
 	if (!solved)	{
-		printf("Operace First nebyla implementovÃ¡na!\n");
+		printf("Operace First nebyla implementována!\n");
 		return(FALSE);
 	}
 	print_elements_of_list(TEMPLIST);
@@ -166,7 +166,7 @@ int test_Succ()	{
 	solved=TRUE;
 	Succ(&TEMPLIST);
 	if (!solved)	{
-		printf("Operace Succ nebyla implementovÃ¡na!\n");
+		printf("Operace Succ nebyla implementována!\n");
 		return(FALSE);
 	}
 	print_elements_of_list(TEMPLIST);
@@ -179,7 +179,7 @@ int test_Actualize()	{
 	solved=TRUE;
 	Actualize(&TEMPLIST,ElemValue);
 	if (!solved)	{
-		printf("Operace Actualize nebyla implementovÃ¡na!\n");
+		printf("Operace Actualize nebyla implementována!\n");
 		return(FALSE);
 	}
 	print_elements_of_list(TEMPLIST);
@@ -192,7 +192,7 @@ int test_DeleteFirst()	{
 	solved=TRUE;
 	DeleteFirst(&TEMPLIST);
 	if (!solved)	{
-		printf("Operace DeleteFirst() nebyla implementovÃ¡na!\n");
+		printf("Operace DeleteFirst() nebyla implementována!\n");
 		return(FALSE);
 	}	
 	print_elements_of_list(TEMPLIST);
@@ -205,7 +205,7 @@ int test_PostDelete()	{
 	solved=TRUE;
 	PostDelete(&TEMPLIST);
 	if (!solved)	{
-		printf("Operace PostDelete() nebyla implementovÃ¡na!\n");
+		printf("Operace PostDelete() nebyla implementována!\n");
 		return(FALSE);
 	}	
 	print_elements_of_list(TEMPLIST);
@@ -218,7 +218,7 @@ int test_PostInsert()	{
 	solved=TRUE;
 	PostInsert(&TEMPLIST,ElemValue);
 	if (!solved){
-		printf("Operace PostInsert nebyla implementovÃ¡na!\n");
+		printf("Operace PostInsert nebyla implementována!\n");
 		return(FALSE);
 	}
 	print_elements_of_list(TEMPLIST);
@@ -231,7 +231,7 @@ int test_DisposeList() {
     solved=TRUE;
     DisposeList(&TEMPLIST);
     if (!solved) {
-        printf("Operace DisposeList() nebyla implementovÃ¡na!\n");
+        printf("Operace DisposeList() nebyla implementována!\n");
         return(FALSE);
     }	
     print_elements_of_list(TEMPLIST);
@@ -239,18 +239,18 @@ int test_DisposeList() {
 }
 
 /*******************************************************************************
- * ZÃKLADNÃ TESTY
+ * ZÁKLADNÍ TESTY
  * -------------- 
- * Za jejich ÃºspÄ›Å¡nÃ© projÃ­tÃ­ zÃ­skÃ¡ student prvnÃ­ ÄÃ¡st bodÅ¯ za pÅ™Ã­klad.
- * PÅ™i hodnocenÃ­ vÅ¡ak budou pouÅ¾ity rozÅ¡Ã­Å™enÃ© testy, kterÃ© se zamÄ›Å™Ã­
- * i na okrajovÃ© situace. DoporuÄujeme proto, aby si kaÅ¾dÃ½ student
- * zkusil tyto zÃ¡kladnÃ­ testy rozÅ¡Ã­Å™it o dalÅ¡Ã­ zajÃ­mavÃ© situace.
+ * Za jejich úspì¹né projítí získá student první èást bodù za pøíklad.
+ * Pøi hodnocení v¹ak budou pou¾ity roz¹íøené testy, které se zamìøí
+ * i na okrajové situace. Doporuèujeme proto, aby si ka¾dı student
+ * zkusil tyto základní testy roz¹íøit o dal¹í zajímavé situace.
  *  
  ******************************************************************************/
 
 int main(int argc, char *argv[])	{
 
-    printf("JednosmÄ›rnÄ› vÃ¡zanÃ½ lineÃ¡rnÃ­ seznam\n");
+    printf("Jednosmìrnì vázanı lineární seznam\n");
     printf("==================================\n");
 
     printf("\n[TEST01]\n");
@@ -259,12 +259,12 @@ int main(int argc, char *argv[])	{
     test_InitList();
 	
     printf("\n[TEST02]\n");
-    printf("Pokus o volÃ¡nÃ­ CopyFirst nad prÃ¡zdnÃ½m seznamem => chyba\n");
+    printf("Pokus o volání CopyFirst nad prázdnım seznamem => chyba\n");
     printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
     test_CopyFirst();
 	
     printf("\n[TEST03]\n");
-    printf("ZavolÃ¡me 4x operaci InsertFirst.\n");
+    printf("Zavoláme 4x operaci InsertFirst.\n");
     printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
     ElemValue=1; test_InsertFirst();
     ElemValue=2; test_InsertFirst();
@@ -272,23 +272,23 @@ int main(int argc, char *argv[])	{
     ElemValue=4; test_InsertFirst();
 
     printf("\n[TEST04]\n");
-    printf("Seznam je neaktivnÃ­ -- ovÄ›Å™Ã­me si to volÃ¡nÃ­m funce Active.\n");
+    printf("Seznam je neaktivní -- ovìøíme si to voláním funce Active.\n");
     printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
     test_Active(); 
 	
     printf("\n[TEST05]\n");
-    printf("Otestujeme funkci First pÅ™i neaktivnÃ­m seznamu a funkci Active.\n");
+    printf("Otestujeme funkci First pøi neaktivním seznamu a funkci Active.\n");
     printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
     test_First();
     test_Active();
 	
     printf("\n[TEST06]\n");
-    printf("Test funkce Copy pÅ™i aktivitÄ› na prvnÃ­m prvku\n");
+    printf("Test funkce Copy pøi aktivitì na prvním prvku\n");
     printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
     test_Copy();
  
     printf("\n[TEST07]\n");
-    printf("Test funkce Succ -- volÃ¡me 3x, aktivita bude na poslednÃ­m prvku.\n");
+    printf("Test funkce Succ -- voláme 3x, aktivita bude na posledním prvku.\n");
     printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
     test_Succ();
     test_Succ();
@@ -296,7 +296,7 @@ int main(int argc, char *argv[])	{
     test_Active();
  
     printf("\n[TEST08]\n");
-    printf("Aktualizujeme obsah aktivnÃ­ho prvku.\n");
+    printf("Aktualizujeme obsah aktivního prvku.\n");
     printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
     ElemValue=10;	
     test_Actualize();
@@ -304,25 +304,25 @@ int main(int argc, char *argv[])	{
     test_Copy();
 	
     printf("\n[TEST09]\n"); 
-    printf("Provedeme jeÅ¡tÄ› jednou Succ -- aktivita se ztratÃ­.\n");
+    printf("Provedeme je¹tì jednou Succ -- aktivita se ztratí.\n");
     printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
     test_Succ();
     test_Active();
 	
     printf("\n[TEST10]\n");
-    printf("Operace First nastavÃ­ aktivitu na prvnÃ­ prvek.\n");
+    printf("Operace First nastaví aktivitu na první prvek.\n");
     printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
     test_First();
     test_Active();
 
     printf("\n[TEST11]\n");
-    printf("DeleteFirst aktivnÃ­ho prvku povede ke ztrÃ¡tÄ› aktivity.\n");
+    printf("DeleteFirst aktivního prvku povede ke ztrátì aktivity.\n");
     printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
     test_DeleteFirst();
     test_Active();
 
     printf("\n[TEST12]\n");
-    printf("UÅ¾itÃ­m operacÃ­ First a Succ nastavÃ­me aktivitu na konec seznamu.\n");
+    printf("U¾itím operací First a Succ nastavíme aktivitu na konec seznamu.\n");
     printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
     test_First();
     test_Succ();
@@ -330,13 +330,13 @@ int main(int argc, char *argv[])	{
     test_Active();
 
     printf("\n[TEST13]\n");
-    printf("Operace PostDelete pÅ™i aktivitÄ› na poslednÃ­m prvku nedÄ›lÃ¡ nic.\n");
+    printf("Operace PostDelete pøi aktivitì na posledním prvku nedìlá nic.\n");
     printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
     test_PostDelete();
     test_Active();
     
     printf("\n[TEST14]\n");
-    printf("NastavÃ­me aktivitu na zaÄÃ¡tek a dvakrÃ¡t zavolÃ¡me PostDelete.\n");
+    printf("Nastavíme aktivitu na zaèátek a dvakrát zavoláme PostDelete.\n");
     printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
     test_First();
     test_Active();
@@ -345,8 +345,8 @@ int main(int argc, char *argv[])	{
     test_Active();
 	
     printf("\n[TEST15]\n");
-    printf("Otestujeme InsertFirst pÅ™i seznamu s jedinÃ½m prvkem, nastavÃ­me\n");
-    printf("aktivitu na novÄ› vloÅ¾enÃ½ prvek a opÄ›t posuneme aktivitu na konec\n"); 
+    printf("Otestujeme InsertFirst pøi seznamu s jedinım prvkem, nastavíme\n");
+    printf("aktivitu na novì vlo¾enı prvek a opìt posuneme aktivitu na konec\n"); 
     printf("seznamu.\n");
     printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
     ElemValue=101;
@@ -356,14 +356,14 @@ int main(int argc, char *argv[])	{
     test_Active();
 
     printf("\n[TEST16]\n");
-    printf("OperacÃ­ PostInsert vloÅ¾Ã­me novÃ½ prvek za poslednÃ­ prvek seznamu.\n");
+    printf("Operací PostInsert vlo¾íme novı prvek za poslední prvek seznamu.\n");
     printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
     ElemValue=102;
     test_PostInsert();
     test_Active();
 
     printf("\n[TEST17]\n");
-    printf("NastavÃ­me aktivitu na prvnÃ­ prvek seznamu a vyzkouÅ¡Ã­me PostInsert.\n");
+    printf("Nastavíme aktivitu na první prvek seznamu a vyzkou¹íme PostInsert.\n");
     printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
     test_First();
     ElemValue=103;
@@ -371,11 +371,11 @@ int main(int argc, char *argv[])	{
     test_Active();
 
     printf("\n[TEST18]\n");
-    printf("Otestujeme funkÄnost operace DisposeList.\n");
+    printf("Otestujeme funkènost operace DisposeList.\n");
     printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
     test_DisposeList();
     
-    printf("\n----------------------- konec pÅ™Ã­kladu c201 -------------------------\n");
+    printf("\n----------------------- konec pøíkladu c201 -------------------------\n");
 	
     return(0);
 }	

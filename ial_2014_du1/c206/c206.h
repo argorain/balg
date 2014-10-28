@@ -1,10 +1,10 @@
 
-/* PÅ™edmÄ›t: Algoritmy (IAL) - FIT VUT v BrnÄ›
- * HlaviÄkovÃ½ soubor pro c206.c (DvousmÄ›rnÄ› vÃ¡zanÃ½ lineÃ¡rnÃ­ seznam)
- * VytvoÅ™il: Martin TuÄek, zÃ¡Å™Ã­ 2005
- * Upravil: Bohuslav KÅ™ena, Å™Ã­jen 2014
+/* Pøedmìt: Algoritmy (IAL) - FIT VUT v Brnì
+ * Hlavièkovı soubor pro c206.c (Dvousmìrnì vázanı lineární seznam)
+ * Vytvoøil: Martin Tuèek, záøí 2005
+ * Upravil: Bohuslav Køena, øíjen 2014
  *  
- * Tento soubor, prosÃ­me, neupravujte!  
+ * Tento soubor, prosíme, neupravujte!  
  */
 
 #include<stdio.h>
@@ -16,19 +16,19 @@
 extern int errflg;
 extern int solved;
  
-typedef struct tDLElem {                 /* prvek dvousmÄ›rnÄ› vÃ¡zanÃ©ho seznamu */ 
-        int data;                                            /* uÅ¾iteÄnÃ¡ data */
-        struct tDLElem *lptr;          /* ukazatel na pÅ™edchozÃ­ prvek seznamu */
-        struct tDLElem *rptr;        /* ukazatel na nÃ¡sledujÃ­cÃ­ prvek seznamu */
+typedef struct tDLElem {                 /* prvek dvousmìrnì vázaného seznamu */ 
+        int data;                                            /* u¾iteèná data */
+        struct tDLElem *lptr;          /* ukazatel na pøedchozí prvek seznamu */
+        struct tDLElem *rptr;        /* ukazatel na následující prvek seznamu */
 } *tDLElemPtr;
 
-typedef struct {                                  /* dvousmÄ›rnÄ› vÃ¡zanÃ½ seznam */
-    tDLElemPtr First;                      /* ukazatel na prvnÃ­ prvek seznamu */
-    tDLElemPtr Act;                     /* ukazatel na aktuÃ¡lnÃ­ prvek seznamu */
+typedef struct {                                  /* dvousmìrnì vázanı seznam */
+    tDLElemPtr First;                      /* ukazatel na první prvek seznamu */
+    tDLElemPtr Act;                     /* ukazatel na aktuální prvek seznamu */
     tDLElemPtr Last;                    /* ukazatel na posledni prvek seznamu */
 } tDLList;
 
-                                             /* prototypy jednotlivÃ½ch funkcÃ­ */
+                                             /* prototypy jednotlivıch funkcí */
 void DLInitList (tDLList *);
 void DLDisposeList (tDLList *);
 void DLInsertFirst (tDLList *, int);
@@ -49,4 +49,4 @@ void DLSucc (tDLList *);
 void DLPred (tDLList *);
 int DLActive (tDLList *);
 
-/* Konec hlaviÄkovÃ©ho souboru c206.h */
+/* Konec hlavièkového souboru c206.h */

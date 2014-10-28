@@ -1,11 +1,11 @@
 
-/* PÅ™edmÄ›t: Algoritmy (IAL) - FIT VUT v BrnÄ›
- * HlaviÄkovÃ½ soubor pro c201.c (JednosmÄ›rnÄ› vÃ¡zanÃ½ lineÃ¡rnÃ­ seznam)
- * VytvoÅ™il: Martin TuÄek, zÃ¡Å™Ã­ 2005
- * Upravil: Bohuslav KÅ™ena, Å™Ã­jen 2014
+/* Pøedmìt: Algoritmy (IAL) - FIT VUT v Brnì
+ * Hlavièkovı soubor pro c201.c (Jednosmìrnì vázanı lineární seznam)
+ * Vytvoøil: Martin Tuèek, záøí 2005
+ * Upravil: Bohuslav Køena, øíjen 2014
  * 
  *
- * Tento soubor, prosÃ­me, neupravujte! 
+ * Tento soubor, prosíme, neupravujte! 
  * Please, do not modify this file! 
  */
  
@@ -15,7 +15,7 @@
 
 #define TRUE 1
 #define FALSE 0
-                                           /* Indikace, zda byl pÅ™Ã­klad Å™eÅ¡en */
+                                           /* Indikace, zda byl pøíklad øe¹en */
                                    /* Detects whether the task is implemented */
 extern int solved;                         
                                                             /* Indikace chyby */
@@ -27,7 +27,7 @@ typedef struct tElem {
     struct tElem *ptr;
     int data;
 } *tElemPtr;	               
-                                                            /* VlastnÃ­ seznam */
+                                                            /* Vlastní seznam */
                                                         /* Definition of list */
 typedef struct { 
     tElemPtr Act;
@@ -48,4 +48,4 @@ void Copy (tList *, int *);
 void Actualize (tList *, int);
 int  Active (tList *);
 
-/* Konec hlaviÄkovÃ©ho souboru c201.h */
+/* Konec hlavièkového souboru c201.h */

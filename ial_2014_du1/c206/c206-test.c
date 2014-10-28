@@ -1,20 +1,20 @@
 
 /*
- *  PÅ™edmÄ›t: Algoritmy (IAL) - FIT VUT v BrnÄ›
- *  ZÃ¡kladnÃ­ testy pro pÅ™Ã­klad c206.c (DvousmÄ›rnÄ› vÃ¡zanÃ½ lineÃ¡rnÃ­ seznam)
- *  VytvoÅ™il: Martin TuÄek, zÃ¡Å™Ã­ 2005
- *  Ãšprava: Bohuslav KÅ™ena, Å™Ã­jen 2009
+ *  Pøedmìt: Algoritmy (IAL) - FIT VUT v Brnì
+ *  Základní testy pro pøíklad c206.c (Dvousmìrnì vázanı lineární seznam)
+ *  Vytvoøil: Martin Tuèek, záøí 2005
+ *  Úprava: Bohuslav Køena, øíjen 2009
  */
 
 #include "c206.h"
-                                                         /* pracovnÃ­ promÄ›nnÃ© */
+                                                         /* pracovní promìnné */
 tDLList TEMPLIST;		
 int ElemValue=1;
 int MaxListLength = 100;                     /* Handles wrongly linked lists. */
 
 
 /*******************************************************************************
- * PomocnÃ© funkce usnadÅˆujÃ­cÃ­ testovÃ¡nÃ­ vlastnÃ­ implementace.
+ * Pomocné funkce usnadòující testování vlastní implementace.
  ******************************************************************************/
 
 void print_elements_of_list(tDLList TL)	{
@@ -25,7 +25,7 @@ void print_elements_of_list(tDLList TL)	{
 	while ((TempList.First!=NULL) && (CurrListLength<MaxListLength))	{
 		printf("\n \t%d",TempList.First->data);
 		if ((TempList.First==TL.Act) && (TL.Act!=NULL))
-			printf("\t <= toto je aktivnÃ­ prvek ");
+			printf("\t <= toto je aktivní prvek ");
 		TempList.First=TempList.First->rptr;
 		CurrListLength++;
 	}
@@ -38,7 +38,7 @@ int test_DLInitList()	{
 	solved=TRUE;	
 	DLInitList(&TEMPLIST);
 	if (!solved)	{
-		printf("Operace InitList nebyla implementovÃ¡na!\n");
+		printf("Operace InitList nebyla implementována!\n");
 		return(FALSE);
 	}	
 	else	{
@@ -51,7 +51,7 @@ int test_DLDisposeList()	{
 	solved=TRUE;
 	DLDisposeList(&TEMPLIST);
 	if (!solved)	{
-		printf("Operace DLDisposeList nebyla implementovÃ¡na!\n");
+		printf("Operace DLDisposeList nebyla implementována!\n");
 		return(FALSE);
 	}	
 	else	{
@@ -64,7 +64,7 @@ int test_DLInsertFirst()	{
 	solved=TRUE;
 	DLInsertFirst(&TEMPLIST,ElemValue);
 	if (!solved)	{
-		printf("Operace DLInsertFirst nebyla implementovÃ¡na!\n");
+		printf("Operace DLInsertFirst nebyla implementována!\n");
 		return(FALSE);
 	}	
 	else	{
@@ -77,7 +77,7 @@ int test_DLInsertLast()	{
 	solved=TRUE;
 	DLInsertLast(&TEMPLIST,ElemValue);
 	if (!solved)	{
-		printf("Operace DLInsertLast nebyla implementovÃ¡na!\n");
+		printf("Operace DLInsertLast nebyla implementována!\n");
 		return(FALSE);
 	}	
 	else	{
@@ -90,7 +90,7 @@ int test_DLFirst()	{
 	solved=TRUE;
 	DLFirst(&TEMPLIST);
 	if (!solved)	{
-		printf("Operace DLFirst nebyla implementovÃ¡na!\n");
+		printf("Operace DLFirst nebyla implementována!\n");
 		return(FALSE);
 	}	
 	else	{
@@ -103,7 +103,7 @@ int test_DLLast()	{
 	solved=TRUE;
 	DLLast(&TEMPLIST);
 	if (!solved)	{
-		printf("Operace DLLast nebyla implementovÃ¡na!\n");
+		printf("Operace DLLast nebyla implementována!\n");
 		return(FALSE);
 	}	
 	else	{
@@ -117,7 +117,7 @@ int test_DLCopyFirst()	{
     int temp;
     DLCopyFirst(&TEMPLIST,&temp);	
 	if (!solved)	{
-		printf("Operace DLCopyFirst nebyla implementovÃ¡na!\n");
+		printf("Operace DLCopyFirst nebyla implementována!\n");
 		return(FALSE);
 	}
 	else {
@@ -127,7 +127,7 @@ int test_DLCopyFirst()	{
 			return(FALSE);
 		}	
 		else	{	 			
-			printf("Operace DLCopyFirst vracÃ­ obsah %d.\n",temp);
+			printf("Operace DLCopyFirst vrací obsah %d.\n",temp);
 			return(TRUE);
 		}	
 	}
@@ -138,7 +138,7 @@ int test_DLCopyLast()	{
     int temp;
     DLCopyLast(&TEMPLIST,&temp);	
 	if (!solved)	{
-		printf("Operace DLCopyLast nebyla implementovÃ¡na!\n");
+		printf("Operace DLCopyLast nebyla implementována!\n");
 		return(FALSE);
 	}
 	else {
@@ -148,7 +148,7 @@ int test_DLCopyLast()	{
 			return(FALSE);
 		}	
 		else	{	 			
-			printf("Operace DLCopyLast vracÃ­ obsah %d.\n",temp);
+			printf("Operace DLCopyLast vrací obsah %d.\n",temp);
 			return(TRUE);
 		}	
 	}
@@ -158,7 +158,7 @@ int test_DLDeleteFirst ()	{
 	solved=TRUE;	
 	DLDeleteFirst(&TEMPLIST);
 	if (!solved)	{
-		printf("Operace DLDeleteFirst nebyla implementovÃ¡na!\n");
+		printf("Operace DLDeleteFirst nebyla implementována!\n");
 		return(FALSE);
 	}	
 	else	{
@@ -171,7 +171,7 @@ int test_DLDeleteLast ()	{
 	solved=TRUE;	
 	DLDeleteLast(&TEMPLIST);
 	if (!solved)	{
-		printf("Operace DLDeleteLast nebyla implementovÃ¡na!\n");
+		printf("Operace DLDeleteLast nebyla implementována!\n");
 		return(FALSE);
 	}	
 	else	{
@@ -184,7 +184,7 @@ int test_DLPostDelete()	{
 	solved=TRUE;	
 	DLPostDelete(&TEMPLIST);
 	if (!solved)	{
-		printf("Operace DLPostDelete nebyla implementovÃ¡na!\n");
+		printf("Operace DLPostDelete nebyla implementována!\n");
 		return(FALSE);
 	}	
 	else	{
@@ -197,7 +197,7 @@ int test_DLPreDelete()	{
 	solved=TRUE;	
 	DLPreDelete(&TEMPLIST);
 	if (!solved)	{
-		printf("Operace DLPreDelete nebyla implementovÃ¡na!\n");
+		printf("Operace DLPreDelete nebyla implementována!\n");
 		return(FALSE);
 	}	
 	else	{
@@ -210,7 +210,7 @@ int test_DLPostInsert()	{
 	solved=TRUE;
 	DLPostInsert(&TEMPLIST,ElemValue);
 	if (!solved)	{
-		printf("Operace DLPostInsert nebyla implementovÃ¡na!\n");
+		printf("Operace DLPostInsert nebyla implementována!\n");
 		return(FALSE);
 	}	
 	else	{
@@ -223,7 +223,7 @@ int test_DLPreInsert()	{
 	solved=TRUE;
 	DLPreInsert(&TEMPLIST,ElemValue);
 	if (!solved)	{
-		printf("Operace DLPreInsert nebyla implementovÃ¡na!\n");
+		printf("Operace DLPreInsert nebyla implementována!\n");
 		return(FALSE);
 	}	
 	else	{
@@ -238,7 +238,7 @@ int test_DLCopy()	{
   DLCopy(&TEMPLIST,&temp);	
 	
 	if (!solved)	{
-		printf("Operace DLCopy nebyla implementovÃ¡na!\n");
+		printf("Operace DLCopy nebyla implementována!\n");
 		return(FALSE);
 	}
 	else {
@@ -248,7 +248,7 @@ int test_DLCopy()	{
 			return(FALSE);
 		}	
 		else	{	 			
-			printf("Operace DLCopy vracÃ­ obsah %d.\n",temp);
+			printf("Operace DLCopy vrací obsah %d.\n",temp);
 			return(TRUE);
 		}	
 	}	
@@ -258,7 +258,7 @@ int test_DLActualize()	{
 	solved=TRUE;
 	DLActualize(&TEMPLIST,ElemValue);
 	if (!solved)	{
-		printf("Operace DLActualize nebyla implementovÃ¡na!\n");
+		printf("Operace DLActualize nebyla implementována!\n");
 		return(FALSE);
 	}	
 	else	{
@@ -271,7 +271,7 @@ int test_DLSucc()	{
 	solved=TRUE;
 	DLSucc(&TEMPLIST);
 	if (!solved)	{
-		printf("Operace DLSucc nebyla implementovÃ¡na!\n");
+		printf("Operace DLSucc nebyla implementována!\n");
 		return(FALSE);
 	}	
 	else	{
@@ -284,7 +284,7 @@ int test_DLPred()	{
 	solved=TRUE;
 	DLPred(&TEMPLIST);
 	if (!solved)	{
-		printf("Operace DLPred nebyla implementovÃ¡na!\n");
+		printf("Operace DLPred nebyla implementována!\n");
 		return(FALSE);
 	}	
 	else	{
@@ -297,31 +297,31 @@ int test_DLActive()	{
 	solved=TRUE;
 	int tmp=DLActive(&TEMPLIST);
 	if (!solved)	{
-		printf("Operace DLActive nebyla implementovÃ¡na!\n");
+		printf("Operace DLActive nebyla implementována!\n");
 		return(FALSE);
 	}	
 	else	{
 		if (tmp)
-			printf("Operace DLActive vracÃ­ hodnotu true.\n");
+			printf("Operace DLActive vrací hodnotu true.\n");
 		else
-			printf("Operace DLActive vracÃ­ hodnotu false.\n");	
+			printf("Operace DLActive vrací hodnotu false.\n");	
 		return(TRUE);			
 	}
 }
 
 /*******************************************************************************
- * ZÃKLADNÃ TESTY
+ * ZÁKLADNÍ TESTY
  * -------------- 
- * Za jejich ÃºspÄ›Å¡nÃ© projÃ­tÃ­ zÃ­skÃ¡ student prvnÃ­ ÄÃ¡st bodÅ¯ za pÅ™Ã­klad.
- * PÅ™i hodnocenÃ­ vÅ¡ak budou pouÅ¾ity rozÅ¡Ã­Å™enÃ© testy, kterÃ© se zamÄ›Å™Ã­
- * i na okrajovÃ© situace. DoporuÄujeme proto, aby si kaÅ¾dÃ½ student
- * zkusitl tyto zÃ¡kladnÃ­ testy rozÅ¡Ã­Å™it o dalÅ¡Ã­ zajÃ­mavÃ© situace.
+ * Za jejich úspì¹né projítí získá student první èást bodù za pøíklad.
+ * Pøi hodnocení v¹ak budou pou¾ity roz¹íøené testy, které se zamìøí
+ * i na okrajové situace. Doporuèujeme proto, aby si ka¾dı student
+ * zkusitl tyto základní testy roz¹íøit o dal¹í zajímavé situace.
  *  
  ******************************************************************************/
 
 int main(int argc, char *argv[])	{
 	
-    printf("DvousmÄ›rnÄ› vÃ¡zanÃ½ lineÃ¡rnÃ­ seznam\n");
+    printf("Dvousmìrnì vázanı lineární seznam\n");
     printf("=================================\n");
 
     printf("\n[TEST01]\n");
@@ -330,7 +330,7 @@ int main(int argc, char *argv[])	{
     test_DLInitList();
 
     printf("\n[TEST02]\n");
-    printf("ZavolÃ¡me 2x operaci DLInsertFirst a 2x operaci DLInsertLast.\n");
+    printf("Zavoláme 2x operaci DLInsertFirst a 2x operaci DLInsertLast.\n");
     printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");	
     ElemValue=1;
     test_DLInsertFirst();	
@@ -342,7 +342,7 @@ int main(int argc, char *argv[])	{
     test_DLInsertLast();
 	
     printf("\n[TEST03]\n");
-    printf("Otestujeme funkci DLFirst pÅ™i neaktivnÃ­m seznamu a funkci DLActive.\n");
+    printf("Otestujeme funkci DLFirst pøi neaktivním seznamu a funkci DLActive.\n");
     printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
     test_DLFirst();
     test_DLActive();
@@ -354,12 +354,12 @@ int main(int argc, char *argv[])	{
     test_DLActive();
 	
     printf("\n[TEST05]\n");
-    printf("Test funkce DLCopy pÅ™i aktivitÄ› na poslednÃ­m prvku\n");
+    printf("Test funkce DLCopy pøi aktivitì na posledním prvku\n");
     printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
     test_DLCopy();
 
     printf("\n[TEST06]\n");
-    printf("Test funkce DLPred -- volÃ¡me 3x, aktivita zÅ¯stane na prvnÃ­m prvku.\n");
+    printf("Test funkce DLPred -- voláme 3x, aktivita zùstane na prvním prvku.\n");
     printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
     test_DLPred();
     test_DLPred();
@@ -367,7 +367,7 @@ int main(int argc, char *argv[])	{
     test_DLActive();
 
     printf("\n[TEST07]\n");
-    printf("Aktualizujeme obsah aktivnÃ­ho prvku.\n");
+    printf("Aktualizujeme obsah aktivního prvku.\n");
     printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");	
     ElemValue=5;
     test_DLActualize();
@@ -375,7 +375,7 @@ int main(int argc, char *argv[])	{
     test_DLCopy();
 	
     printf("\n[TEST08]\n");
-    printf("Test funkce DLSucc -- volÃ¡me 3x, aktivita zÅ¯stane na poslednÃ­m prvku.\n");
+    printf("Test funkce DLSucc -- voláme 3x, aktivita zùstane na posledním prvku.\n");
     printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
     test_DLSucc();
     test_DLSucc();
@@ -383,65 +383,65 @@ int main(int argc, char *argv[])	{
     test_DLActive();
 	
     printf("\n[TEST09]\n");
-    printf("Provedeme jeÅ¡tÄ› jednou DLSucc - aktivita se ztratÃ­.\n");
+    printf("Provedeme je¹tì jednou DLSucc - aktivita se ztratí.\n");
     printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
     test_DLSucc();
     test_DLActive();
 	
     printf("\n[TEST10]\n");
-    printf("NastavÃ­me aktivitu na zaÄÃ¡tek a pak ji zruÅ¡Ã­me operacÃ­ DLPred.\n");
+    printf("Nastavíme aktivitu na zaèátek a pak ji zru¹íme operací DLPred.\n");
     printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
     test_DLFirst();
     test_DLPred();
     test_DLActive();
 	
     printf("\n[TEST11]\n");
-    printf("Pokus o DLCopy pÅ™i neaktivnÃ­m seznamu => oÅ¡etÅ™enÃ¡ chyba.\n");
+    printf("Pokus o DLCopy pøi neaktivním seznamu => o¹etøená chyba.\n");
     printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
     test_DLCopy();
     
     printf("\n[TEST12]\n");
-    printf("PouÅ¾itÃ­ operace DLCopyFirst pÅ™i neaktivnÃ­m seznamu\n");
+    printf("Pou¾ití operace DLCopyFirst pøi neaktivním seznamu\n");
     printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
     test_DLCopyFirst();
 
     printf("\n[TEST13]\n");
-    printf("PouÅ¾itÃ­ operace DLCopyLast pÅ™i neaktivnÃ­m seznamu\n");
+    printf("Pou¾ití operace DLCopyLast pøi neaktivním seznamu\n");
     printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
     test_DLCopyLast();
 
     printf("\n[TEST14]\n");
-    printf("PouÅ¾itÃ­ operace DLDeleteFirst pÅ™i neaktivnÃ­m seznamu\n");
+    printf("Pou¾ití operace DLDeleteFirst pøi neaktivním seznamu\n");
     printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
     test_DLDeleteFirst();
     test_DLActive();
 
     printf("\n[TEST15]\n");
-    printf("PouÅ¾itÃ­ operace DLDeleteLast pÅ™i neaktivnÃ­m seznamu\n");
+    printf("Pou¾ití operace DLDeleteLast pøi neaktivním seznamu\n");
     printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
     test_DLDeleteLast();
       test_DLActive();
 	
     printf("\n[TEST16]\n");
-    printf("ZkusÃ­me DLPostDelete pÅ™i aktivitÄ› na poslednÃ­m prvku.\n");
+    printf("Zkusíme DLPostDelete pøi aktivitì na posledním prvku.\n");
     printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
     test_DLLast();
     test_DLPostDelete();
     test_DLActive();
 	
     printf("\n[TEST17]\n");
-    printf("Operace DLPreDelete nynÃ­ smaÅ¾e prvnÃ­ prvek.\n");
+    printf("Operace DLPreDelete nyní sma¾e první prvek.\n");
     printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
     test_DLPreDelete();
     test_DLActive();
     
     printf("\n[TEST18]\n"); 
-    printf("Seznam nakonec zruÅ¡Ã­me.\n");
+    printf("Seznam nakonec zru¹íme.\n");
     printf("~~~~~~~~~~~~~~~~~~~~~~~\n");
     test_DLDisposeList();
     test_DLActive();
 
-    printf("\n----------------------- konec pÅ™Ã­kladu c206 -------------------------\n");
+    printf("\n----------------------- konec pøíkladu c206 -------------------------\n");
 		
     return(0);
 } 

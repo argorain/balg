@@ -1,47 +1,47 @@
 
 /* c201.c *********************************************************************}
-{* TÃ©ma: JednosmÄ›rnÃ½ lineÃ¡rnÃ­ seznam
+{* Téma: Jednosmìrnı lineární seznam
 **
-**                     NÃ¡vrh a referenÄnÃ­ implementace: Petr PÅ™ikryl, Å™Ã­jen 1994
-**                                          Ãšpravy: Andrea NÄ›mcovÃ¡ listopad 1996
-**                                                   Petr PÅ™ikryl, listopad 1997
-**                                PÅ™epracovanÃ© zadÃ¡nÃ­: Petr PÅ™ikryl, bÅ™ezen 1998
-**                                  PÅ™epis do jazyka C: Martin TuÄek, Å™Ã­jen 2004
-**	                                      Ãšpravy: Bohuslav KÅ™ena, Å™Ã­jen 2014
+**                     Návrh a referenèní implementace: Petr Pøikryl, øíjen 1994
+**                                          Úpravy: Andrea Nìmcová listopad 1996
+**                                                   Petr Pøikryl, listopad 1997
+**                                Pøepracované zadání: Petr Pøikryl, bøezen 1998
+**                                  Pøepis do jazyka C: Martin Tuèek, øíjen 2004
+**	                                      Úpravy: Bohuslav Køena, øíjen 2014
 **
-** Implementujte abstraktnÃ­ datovÃ½ typ jednosmÄ›rnÃ½ lineÃ¡rnÃ­ seznam.
-** UÅ¾iteÄnÃ½m obsahem prvku seznamu je celÃ© ÄÃ­slo typu int.
-** Seznam bude jako datovÃ¡ abstrakce reprezentovÃ¡n promÄ›nnou typu tList.
-** Definici konstant a typÅ¯ naleznete v hlaviÄkovÃ©m souboru c201.h.
+** Implementujte abstraktní datovı typ jednosmìrnı lineární seznam.
+** U¾iteènım obsahem prvku seznamu je celé èíslo typu int.
+** Seznam bude jako datová abstrakce reprezentován promìnnou typu tList.
+** Definici konstant a typù naleznete v hlavièkovém souboru c201.h.
 ** 
-** VaÅ¡Ã­m Ãºkolem je implementovat nÃ¡sledujÃ­cÃ­ operace, kterÃ© spolu s vÃ½Å¡e
-** uvedenou datovou ÄÃ¡stÃ­ abstrakce tvoÅ™Ã­ abstraktnÃ­ datovÃ½ typ tList:
+** Va¹ím úkolem je implementovat následující operace, které spolu s vı¹e
+** uvedenou datovou èástí abstrakce tvoøí abstraktní datovı typ tList:
 **
-**      InitList ...... inicializace seznamu pÅ™ed prvnÃ­m pouÅ¾itÃ­m,
-**      DisposeList ... zruÅ¡enÃ­ vÅ¡ech prvkÅ¯ seznamu,
-**      InsertFirst ... vloÅ¾enÃ­ prvku na zaÄÃ¡tek seznamu,
-**      First ......... nastavenÃ­ aktivity na prvnÃ­ prvek,
-**      CopyFirst ..... vracÃ­ hodnotu prvnÃ­ho prvku,
-**      DeleteFirst ... zruÅ¡Ã­ prvnÃ­ prvek seznamu,
-**      PostDelete .... ruÅ¡Ã­ prvek za aktivnÃ­m prvkem,
-**      PostInsert .... vloÅ¾Ã­ novÃ½ prvek za aktivnÃ­ prvek seznamu,
-**      Copy .......... vracÃ­ hodnotu aktivnÃ­ho prvku,
-**      Actualize ..... pÅ™epÃ­Å¡e obsah aktivnÃ­ho prvku novou hodnotou,
-**      Succ .......... posune aktivitu na dalÅ¡Ã­ prvek seznamu,
-**      Active ........ zjiÅ¡Å¥uje aktivitu seznamu.
+**      InitList ...... inicializace seznamu pøed prvním pou¾itím,
+**      DisposeList ... zru¹ení v¹ech prvkù seznamu,
+**      InsertFirst ... vlo¾ení prvku na zaèátek seznamu,
+**      First ......... nastavení aktivity na první prvek,
+**      CopyFirst ..... vrací hodnotu prvního prvku,
+**      DeleteFirst ... zru¹í první prvek seznamu,
+**      PostDelete .... ru¹í prvek za aktivním prvkem,
+**      PostInsert .... vlo¾í novı prvek za aktivní prvek seznamu,
+**      Copy .......... vrací hodnotu aktivního prvku,
+**      Actualize ..... pøepí¹e obsah aktivního prvku novou hodnotou,
+**      Succ .......... posune aktivitu na dal¹í prvek seznamu,
+**      Active ........ zji¹»uje aktivitu seznamu.
 **
-** PÅ™i implementaci funkcÃ­ nevolejte Å¾Ã¡dnou z funkcÃ­ implementovanÃ½ch v rÃ¡mci
-** tohoto pÅ™Ã­kladu, nenÃ­-li u danÃ© funkce explicitnÄ› uvedeno nÄ›co jinÃ©ho.
+** Pøi implementaci funkcí nevolejte ¾ádnou z funkcí implementovanıch v rámci
+** tohoto pøíkladu, není-li u dané funkce explicitnì uvedeno nìco jiného.
 **
-** NemusÃ­te oÅ¡etÅ™ovat situaci, kdy mÃ­sto legÃ¡lnÃ­ho ukazatele na seznam 
-** pÅ™edÃ¡ nÄ›kdo jako parametr hodnotu NULL.
+** Nemusíte o¹etøovat situaci, kdy místo legálního ukazatele na seznam 
+** pøedá nìkdo jako parametr hodnotu NULL.
 **
-** Svou implementaci vhodnÄ› komentujte!
+** Svou implementaci vhodnì komentujte!
 **
-** TerminologickÃ¡ poznÃ¡mka: Jazyk C nepouÅ¾Ã­vÃ¡ pojem procedura.
-** Proto zde pouÅ¾Ã­vÃ¡me pojem funkce i pro operace, kterÃ© by byly
-** v algoritmickÃ©m jazyce PascalovskÃ©ho typu implemenovÃ¡ny jako
-** procedury (v jazyce C procedurÃ¡m odpovÃ­dajÃ­ funkce vracejÃ­cÃ­ typ void).
+** Terminologická poznámka: Jazyk C nepou¾ívá pojem procedura.
+** Proto zde pou¾íváme pojem funkce i pro operace, které by byly
+** v algoritmickém jazyce Pascalovského typu implemenovány jako
+** procedury (v jazyce C procedurám odpovídají funkce vracející typ void).
 **/
 
 #include "c201.h"
@@ -51,20 +51,20 @@ int errflg;
 
 void Error() {
 /*
-** Vytiskne upozornÄ›nÃ­ na to, Å¾e doÅ¡lo k chybÄ›.
-** Tato funkce bude volÃ¡na z nÄ›kterÃ½ch dÃ¡le implementovanÃ½ch operacÃ­.
+** Vytiskne upozornìní na to, ¾e do¹lo k chybì.
+** Tato funkce bude volána z nìkterıch dále implementovanıch operací.
 **/	
     printf ("*ERROR* The program has performed an illegal operation.\n");
-    errflg = TRUE;                      /* globÃ¡lnÃ­ promÄ›nnÃ¡ -- pÅ™Ã­znak chyby */
+    errflg = TRUE;                      /* globální promìnná -- pøíznak chyby */
 }
 
 void InitList (tList *L) {
 /*
-** Provede inicializaci seznamu L pÅ™ed jeho prvnÃ­m pouÅ¾itÃ­m (tzn. Å¾Ã¡dnÃ¡
-** z nÃ¡sledujÃ­cÃ­ch funkcÃ­ nebude volÃ¡na nad neinicializovanÃ½m seznamem).
-** Tato inicializace se nikdy nebude provÃ¡dÄ›t nad jiÅ¾ inicializovanÃ½m
-** seznamem, a proto tuto moÅ¾nost neoÅ¡etÅ™ujte. VÅ¾dy pÅ™edpoklÃ¡dejte,
-** Å¾e neinicializovanÃ© promÄ›nnÃ© majÃ­ nedefinovanou hodnotu.
+** Provede inicializaci seznamu L pøed jeho prvním pou¾itím (tzn. ¾ádná
+** z následujících funkcí nebude volána nad neinicializovanım seznamem).
+** Tato inicializace se nikdy nebude provádìt nad ji¾ inicializovanım
+** seznamem, a proto tuto mo¾nost neo¹etøujte. V¾dy pøedpokládejte,
+** ¾e neinicializované promìnné mají nedefinovanou hodnotu.
 **/
     L->Act= NULL;
     L->First = NULL;
@@ -72,115 +72,115 @@ void InitList (tList *L) {
 
 void DisposeList (tList *L) {
 /*
-** ZruÅ¡Ã­ vÅ¡echny prvky seznamu L a uvede seznam L do stavu, v jakÃ©m se nachÃ¡zel
-** po inicializaci. VeÅ¡kerÃ¡ pamÄ›Å¥ pouÅ¾Ã­vanÃ¡ prvky seznamu L bude korektnÄ›
-** uvolnÄ›na volÃ¡nÃ­m operace free.
+** Zru¹í v¹echny prvky seznamu L a uvede seznam L do stavu, v jakém se nacházel
+** po inicializaci. Ve¹kerá pamì» pou¾ívaná prvky seznamu L bude korektnì
+** uvolnìna voláním operace free.
 ***/
 	tElemPtr first;
-    L->Act=NULL;            //aktivnÃ­ vynulujeme
-    while(L->First!=NULL)   //maÅ¾eme, dokud je co
+    L->Act=NULL;            //aktivní vynulujeme
+    while(L->First!=NULL)   //ma¾eme, dokud je co
     {
-        first=L->First;     //vezmeme prvnÃ­ prvek
-        L->First=L->First->ptr; //nastavÃ­me novÃ½ prvnÃ­ prvek jako starÃ½ nÃ¡sledujÃ­cÃ­
-        free(first);        //starÃ½ prvnÃ­ prvek uvolnÃ­me
+        first=L->First;     //vezmeme první prvek
+        L->First=L->First->ptr; //nastavíme novı první prvek jako starı následující
+        free(first);        //starı první prvek uvolníme
     }
- //solved = FALSE;                   /* V pÅ™Ã­padÄ› Å™eÅ¡enÃ­, smaÅ¾te tento Å™Ã¡dek! */
+ //solved = FALSE;                   /* V pøípadì øe¹ení, sma¾te tento øádek! */
 }
 
 void InsertFirst (tList *L, int val) {
 /*
-** VloÅ¾Ã­ prvek s hodnotou val na zaÄÃ¡tek seznamu L.
-** V pÅ™Ã­padÄ›, Å¾e nenÃ­ dostatek pamÄ›ti pro novÃ½ prvek pÅ™i operaci malloc,
-** volÃ¡ funkci Error().
+** Vlo¾í prvek s hodnotou val na zaèátek seznamu L.
+** V pøípadì, ¾e není dostatek pamìti pro novı prvek pøi operaci malloc,
+** volá funkci Error().
 **/
     struct tElem *element;
     if ((element = malloc(sizeof(struct tElem)))!=NULL) //kontrola alokace
     {
-        element->data = val;        //nastavÃ­me data
-        element->ptr = L->First;    //nastavÃ­me ptr na starÃ½ prvnÃ­
-        L->First=element;           //vloÅ¾Ã­me do seznamu
+        element->data = val;        //nastavíme data
+        element->ptr = L->First;    //nastavíme ptr na starı první
+        L->First=element;           //vlo¾íme do seznamu
     }
     else
     {
         Error();
     }
-    //solved = FALSE;                   /* V pÅ™Ã­padÄ› Å™eÅ¡enÃ­, smaÅ¾te tento Å™Ã¡dek! */
+    //solved = FALSE;                   /* V pøípadì øe¹ení, sma¾te tento øádek! */
 }
 
 void First (tList *L) {
 /*
-** NastavÃ­ aktivitu seznamu L na jeho prvnÃ­ prvek.
-** Funkci implementujte jako jedinÃ½ pÅ™Ã­kaz, aniÅ¾ byste testovali,
-** zda je seznam L prÃ¡zdnÃ½.
+** Nastaví aktivitu seznamu L na jeho první prvek.
+** Funkci implementujte jako jedinı pøíkaz, ani¾ byste testovali,
+** zda je seznam L prázdnı.
 **/
 	
     L->Act=L->First;
-// solved = FALSE;                   /* V pÅ™Ã­padÄ› Å™eÅ¡enÃ­, smaÅ¾te tento Å™Ã¡dek! */
+// solved = FALSE;                   /* V pøípadì øe¹ení, sma¾te tento øádek! */
 }
 
 void CopyFirst (tList *L, int *val) {
 /*
-** ProstÅ™ednictvÃ­m parametru val vrÃ¡tÃ­ hodnotu prvnÃ­ho prvku seznamu L.
-** Pokud je seznam L prÃ¡zdnÃ½, volÃ¡ funkci Error().
+** Prostøednictvím parametru val vrátí hodnotu prvního prvku seznamu L.
+** Pokud je seznam L prázdnı, volá funkci Error().
 **/
 	if(L->First==NULL)  //kontrola
         Error();
     else
-        *val = L->First->data;  //vrÃ¡cenÃ­ dat
+        *val = L->First->data;  //vrácení dat
 
- //solved = FALSE;                   /* V pÅ™Ã­padÄ› Å™eÅ¡enÃ­, smaÅ¾te tento Å™Ã¡dek! */
+ //solved = FALSE;                   /* V pøípadì øe¹ení, sma¾te tento øádek! */
 }
 
 void DeleteFirst (tList *L) {
 /*
-** ZruÅ¡Ã­ prvnÃ­ prvek seznamu L a uvolnÃ­ jÃ­m pouÅ¾Ã­vanou pamÄ›Å¥.
-** Pokud byl ruÅ¡enÃ½ prvek aktivnÃ­, aktivita seznamu se ztrÃ¡cÃ­.
-** Pokud byl seznam L prÃ¡zdnÃ½, nic se nedÄ›je.
+** Zru¹í první prvek seznamu L a uvolní jím pou¾ívanou pamì».
+** Pokud byl ru¹enı prvek aktivní, aktivita seznamu se ztrácí.
+** Pokud byl seznam L prázdnı, nic se nedìje.
 **/
 	if(L->First==NULL)  //kontrola
         return;
     else
     {
-        if(L->First==L->Act)        //pokud aktuÃ¡lnÃ­ = prvnÃ­, aktuÃ¡lnÃ­ se ztrÃ¡cÃ­
+        if(L->First==L->Act)        //pokud aktuální = první, aktuální se ztrácí
             L->Act=NULL;
         tElemPtr first = L->First;  //ptr na uvolnovany prvek
-        L->First=L->First->ptr;     //pÅ™esunutÃ­ novÃ©ho prvnÃ­ho prvku
-        free(first);                //a uvolnÄ›nÃ­
+        L->First=L->First->ptr;     //pøesunutí nového prvního prvku
+        free(first);                //a uvolnìní
     }
 
- //solved = FALSE;                   /* V pÅ™Ã­padÄ› Å™eÅ¡enÃ­, smaÅ¾te tento Å™Ã¡dek! */
+ //solved = FALSE;                   /* V pøípadì øe¹ení, sma¾te tento øádek! */
 }	
 
 void PostDelete (tList *L) {
 /* 
-** ZruÅ¡Ã­ prvek seznamu L za aktivnÃ­m prvkem a uvolnÃ­ jÃ­m pouÅ¾Ã­vanou pamÄ›Å¥.
-** Pokud nenÃ­ seznam L aktivnÃ­ nebo pokud je aktivnÃ­ poslednÃ­ prvek seznamu L,
-** nic se nedÄ›je.
+** Zru¹í prvek seznamu L za aktivním prvkem a uvolní jím pou¾ívanou pamì».
+** Pokud není seznam L aktivní nebo pokud je aktivní poslední prvek seznamu L,
+** nic se nedìje.
 **/
 	if(L->Act==NULL || L->Act->ptr==NULL)   //kontrola prvosti a aktivnosti
         return;
-    tElemPtr erase = L->Act->ptr;   //vezmeme prvek ke smazÃ¡nÃ­
-    L->Act->ptr=L->Act->ptr->ptr;   //pÅ™epojÃ­me seznam
-    free(erase);                    //smaÅ¾eme
+    tElemPtr erase = L->Act->ptr;   //vezmeme prvek ke smazání
+    L->Act->ptr=L->Act->ptr->ptr;   //pøepojíme seznam
+    free(erase);                    //sma¾eme
 	
- //solved = FALSE;                   /* V pÅ™Ã­padÄ› Å™eÅ¡enÃ­, smaÅ¾te tento Å™Ã¡dek! */
+ //solved = FALSE;                   /* V pøípadì øe¹ení, sma¾te tento øádek! */
 }
 
 void PostInsert (tList *L, int val) {
 /*
-** VloÅ¾Ã­ prvek s hodnotou val za aktivnÃ­ prvek seznamu L.
-** Pokud nebyl seznam L aktivnÃ­, nic se nedÄ›je!
-** V pÅ™Ã­padÄ›, Å¾e nenÃ­ dostatek pamÄ›ti pro novÃ½ prvek pÅ™i operaci malloc,
-** zavolÃ¡ funkci Error().
+** Vlo¾í prvek s hodnotou val za aktivní prvek seznamu L.
+** Pokud nebyl seznam L aktivní, nic se nedìje!
+** V pøípadì, ¾e není dostatek pamìti pro novı prvek pøi operaci malloc,
+** zavolá funkci Error().
 **/
 	if(L->Act == NULL)  //kontrola aktivity
         return;
     struct tElem *newone;
     if((newone = malloc(sizeof(struct tElem)))!=NULL) //kontrola alokace
     {
-        tElemPtr next = L->Act->ptr;    //ptr na nÃ¡sledujÃ­cÃ­ prvek
-        L->Act->ptr=newone;             //vloÅ¾enÃ­ novÃ©ho prvku
-        newone->ptr=next;               //navÃ¡zÃ¡nÃ­ seznamu
+        tElemPtr next = L->Act->ptr;    //ptr na následující prvek
+        L->Act->ptr=newone;             //vlo¾ení nového prvku
+        newone->ptr=next;               //navázání seznamu
         newone->data=val;               //a jeho data
     }
     else
@@ -189,55 +189,55 @@ void PostInsert (tList *L, int val) {
         return;
     }
 	
- //solved = FALSE;                   /* V pÅ™Ã­padÄ› Å™eÅ¡enÃ­, smaÅ¾te tento Å™Ã¡dek! */
+ //solved = FALSE;                   /* V pøípadì øe¹ení, sma¾te tento øádek! */
 }
 
 void Copy (tList *L, int *val) {
 /*
-** ProstÅ™ednictvÃ­m parametru val vrÃ¡tÃ­ hodnotu aktivnÃ­ho prvku seznamu L.
-** Pokud seznam nenÃ­ aktivnÃ­, zavolÃ¡ funkci Error().
+** Prostøednictvím parametru val vrátí hodnotu aktivního prvku seznamu L.
+** Pokud seznam není aktivní, zavolá funkci Error().
 **/
     if(L->Act==NULL)        //kontrola
         Error();
     else
-        *val = L->Act->data;    //vzetÃ­ jeho dat
+        *val = L->Act->data;    //vzetí jeho dat
 	
- //solved = FALSE;                   /* V pÅ™Ã­padÄ› Å™eÅ¡enÃ­, smaÅ¾te tento Å™Ã¡dek! */
+ //solved = FALSE;                   /* V pøípadì øe¹ení, sma¾te tento øádek! */
 }
 
 void Actualize (tList *L, int val) {
 /*
-** PÅ™epÃ­Å¡e data aktivnÃ­ho prvku seznamu L hodnotou val.
-** Pokud seznam L nenÃ­ aktivnÃ­, nedÄ›lÃ¡ nic!
+** Pøepí¹e data aktivního prvku seznamu L hodnotou val.
+** Pokud seznam L není aktivní, nedìlá nic!
 **/
     if(L->Act==NULL)        //kontrola
         Error();
     else
-        L->Act->data=val;   //nastavenÃ­ dat
+        L->Act->data=val;   //nastavení dat
 	
- //solved = FALSE;                   /* V pÅ™Ã­padÄ› Å™eÅ¡enÃ­, smaÅ¾te tento Å™Ã¡dek! */
+ //solved = FALSE;                   /* V pøípadì øe¹ení, sma¾te tento øádek! */
 }
 
 void Succ (tList *L) {
 /*
-** Posune aktivitu na nÃ¡sledujÃ­cÃ­ prvek seznamu L.
-** VÅ¡imnÄ›te si, Å¾e touto operacÃ­ se mÅ¯Å¾e aktivnÃ­ seznam stÃ¡t neaktivnÃ­m.
-** Pokud seznam L nenÃ­ aktivnÃ­, nedÄ›lÃ¡ nic.
+** Posune aktivitu na následující prvek seznamu L.
+** V¹imnìte si, ¾e touto operací se mù¾e aktivní seznam stát neaktivním.
+** Pokud seznam L není aktivní, nedìlá nic.
 **/
 	
 	if(L->Act!=NULL)        //kontrola
-        L->Act=L->Act->ptr; //pÅ™esunutÃ­ ptr na dalÅ¡Ã­
- //solved = FALSE;                   /* V pÅ™Ã­padÄ› Å™eÅ¡enÃ­, smaÅ¾te tento Å™Ã¡dek! */
+        L->Act=L->Act->ptr; //pøesunutí ptr na dal¹í
+ //solved = FALSE;                   /* V pøípadì øe¹ení, sma¾te tento øádek! */
 }
 
 int Active (tList *L) {		
 /*
-** Je-li seznam L aktivnÃ­, vracÃ­ TRUE. V opaÄnÃ©m pÅ™Ã­padÄ› vracÃ­ FALSE.
-** Tuto funkci implementujte jako jedinÃ½ pÅ™Ã­kaz return. 
+** Je-li seznam L aktivní, vrací TRUE. V opaèném pøípadì vrací FALSE.
+** Tuto funkci implementujte jako jedinı pøíkaz return. 
 **/
 	
 	return L->Act != NULL;
- //solved = FALSE;                   /* V pÅ™Ã­padÄ› Å™eÅ¡enÃ­, smaÅ¾te tento Å™Ã¡dek! */
+ //solved = FALSE;                   /* V pøípadì øe¹ení, sma¾te tento øádek! */
 }
 
 /* Konec c201.c */
