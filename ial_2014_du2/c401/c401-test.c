@@ -161,14 +161,14 @@ int main(int argc, char *argv[])			{
 	K = 'H';
 	Content_of_Insert=1;
 	test_BSTInsert(&TempTree,K,Content_of_Insert);
-	
+
 	printf("[TEST05]\n");
 	printf("Pokusime se vyhledat polozku s klicem H\n");
 	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 	test_BSTSearch(TempTree,K,&Content_of_Search);
 	
 	printf("[TEST06]\n");
-	printf("Vlozime prvek (H,8) - pouze zmena hodnoty\n");   
+	printf("Vlozime prvek (H,8) - pouze zmena hodnoty\n");
 	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 	Content_of_Insert=8;
 	test_BSTInsert(&TempTree,K,Content_of_Insert);
@@ -219,7 +219,7 @@ int main(int argc, char *argv[])			{
 	BSTInsert(&TempTree,'Q',10);
 	BSTInsert(&TempTree,'P',10);
 	BSTInsert(&TempTree,'X',10);
-	BSTInsert(&TempTree,'Y',10);
+    BSTInsert(&TempTree,'Y',10);
 	BSTInsert(&TempTree,'Z',10);
 	
 	Print_tree(TempTree);
