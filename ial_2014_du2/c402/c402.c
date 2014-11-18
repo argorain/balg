@@ -180,8 +180,8 @@ void BTInit (tBTNodePtr *RootPtr)	{
 ** proto je tøeba pøi práci s RootPtr pou¾ít dereferenèní operátor *.
 **/
 	
-	
-	 solved = FALSE;		  /* V pøípadì øe¹ení sma¾te tento øádek! */	
+    (*RootPtr)=NULL;
+	 //solved = FALSE;		  /* V pøípadì øe¹ení sma¾te tento øádek! */
 }
 
 void BTInsert (tBTNodePtr *RootPtr, int Content) {
@@ -194,10 +194,46 @@ void BTInsert (tBTNodePtr *RootPtr, int Content) {
 ** se ve stromu mù¾e vyskytnout nejvý¹e jednou). Pokud se vytváøí nový uzel,
 ** vzniká v¾dy jako list stromu. Funkci implementujte nerekurzivnì.
 **/
-	
-	
+    tBTNodePtr temp,pass;
+
+    if((*RootPtr)==NULL){
+        temp=malloc(sizeof(struct tBTNode));
+        temp->Cont=Content;
+        temp->LPtr= NULL;
+        temp->RPtr=NULL;
+        (*RootPtr)=temp;
+    }else{
+        pass=(*RootPtr);
+        while(pass!=NULL){
+            if(Content<pass->Cont){ //levy
+                if(pass->LPtr!=NULL)
+                    pass=pass->LPtr;
+                else{
+                    temp=malloc(sizeof(struct tBTNode));
+                    temp->Cont=Content;
+                    temp->LPtr= NULL;
+                    temp->RPtr=NULL;
+                    pass->LPtr=temp;
+                    return;
+                }
+            }else if(Content>pass->Cont) { //pravy
+                if(pass->RPtr!=NULL)
+                    pass=pass->RPtr;
+                else{
+                    temp=malloc(sizeof(struct tBTNode));
+                    temp->Cont=Content;
+                    temp->LPtr= NULL;
+                    temp->RPtr=NULL;
+                    pass->RPtr=temp;
+                    return;
+                }
+            }else{
+                return;
+            }
+        }
+    }
 		
-	 solved = FALSE;		  /* V pøípadì øe¹ení sma¾te tento øádek! */	
+	// solved = FALSE;		  /* V pøípadì øe¹ení sma¾te tento øádek! */
 }
 
 /*                                  PREORDER                                  */
@@ -222,9 +258,11 @@ void BTPreorder (tBTNodePtr RootPtr)	{
 ** realizujte jako volání funkce BTWorkOut(). 
 **/
 
-	
-	
-	 solved = FALSE;		  /* V pøípadì øe¹ení sma¾te tento øádek! */	
+    if((RootPtr)==NULL)
+        return;
+    else{
+        //TODO something here
+    }
 }
 
 
@@ -251,9 +289,11 @@ void BTInorder (tBTNodePtr RootPtr)	{
 ** realizujte jako volání funkce BTWorkOut(). 
 **/
 
-	
-	
-	 solved = FALSE;		  /* V pøípadì øe¹ení sma¾te tento øádek! */	
+    if((RootPtr)==NULL)
+        return;
+    else{
+        //TODO something here
+    }
 }
 
 /*                                 POSTORDER                                  */ 
@@ -279,9 +319,12 @@ void BTPostorder (tBTNodePtr RootPtr)	{
 ** Zpracování jednoho uzlu stromu realizujte jako volání funkce BTWorkOut(). 
 **/
 
-	
-		
-	 solved = FALSE;		  /* V pøípadì øe¹ení sma¾te tento øádek! */	
+    if((RootPtr)==NULL)
+        return;
+    else{
+        //TODO something here
+    }
+
 }
 
 
@@ -291,10 +334,30 @@ void BTDisposeTree (tBTNodePtr *RootPtr)	{
 **
 ** Funkci implementujte nerekurzivnì s vyu¾itím zásobníku ukazatelù.
 **/
+    tBTNodePtr temp;
+    tStackP stack;
 
+
+	if((*RootPtr)==NULL)
+        return;
+    else{
+        SInitP(&stack);
+        while(!SEmptyP(&stack) || (*RootPtr) != NULL) //dokud neni zasobnik prazdny a ukazatel na koren je ruzny od NULL
+        {
+            if((*RootPtr) == NULL) //ukazatel na koren nikam neukazuje vyjmeme novou polzku ze zasobniku
+                *RootPtr = STopPopP(&stack);
+            else
+            {
+                if((*RootPtr) -> LPtr != NULL)
+                    SPushP(&stack,(*RootPtr) -> LPtr); //ulozime leveho syna
+                temp = (*RootPtr);
+                (*RootPtr) = (*RootPtr) -> RPtr;  //posuneme se na praveho syna
+                free(temp); //likvidujeme otce
+            }
+        }
+    }
 	
-	
-	 solved = FALSE;		  /* V pøípadì øe¹ení sma¾te tento øádek! */	
+	 //solved = FALSE;		  /* V pøípadì øe¹ení sma¾te tento øádek! */
 }
 
 /* konec c402.c */
