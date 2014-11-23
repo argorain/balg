@@ -246,9 +246,11 @@ void Leftmost_Preorder (tBTNodePtr ptr, tStackP *Stack)	{
 ** a ukazatele na nì is ulo¾íme do zásobníku.
 **/
 
-	
-	
-	 solved = FALSE;		  /* V pøípadì øe¹ení sma¾te tento øádek! */	
+    while(ptr != NULL){
+        SPushP(Stack, ptr);
+        BTWorkOut(ptr);
+        ptr = ptr-> LPtr;
+    }
 }
 
 void BTPreorder (tBTNodePtr RootPtr)	{
@@ -261,7 +263,16 @@ void BTPreorder (tBTNodePtr RootPtr)	{
     if((RootPtr)==NULL)
         return;
     else{
-        //TODO something here
+        tBTNodePtr tmp;
+
+        tStackP stack;
+        SInitP(&stack);
+
+        Leftmost_Preorder(RootPtr,&stack);
+        while(!SEmptyP(&stack)){
+            tmp = STopPopP(&stack);
+            Leftmost_Preorder(tmp -> RPtr,&stack);
+        }
     }
 }
 
@@ -275,10 +286,13 @@ void Leftmost_Inorder(tBTNodePtr ptr, tStackP *Stack)		{
 ** Pøi prùchodu Inorder ukládáme ukazatele na v¹echny nav¹tívené uzly do
 ** zásobníku. 
 **/
+
+    while(ptr != NULL) {
+        SPushP(Stack, ptr);
+        ptr = ptr-> LPtr;
+    }
 	
-	
-	
-	 solved = FALSE;		  /* V pøípadì øe¹ení sma¾te tento øádek! */	
+	// solved = FALSE;		  /* V pøípadì øe¹ení sma¾te tento øádek! */
 	
 }
 
@@ -292,7 +306,18 @@ void BTInorder (tBTNodePtr RootPtr)	{
     if((RootPtr)==NULL)
         return;
     else{
-        //TODO something here
+        tBTNodePtr tmp;
+
+        tStackP stack;
+        SInitP(&stack);
+
+        Leftmost_Inorder(RootPtr, &stack);
+        while(!SEmptyP(&stack)) {
+            tmp = STopPopP(&stack);
+            BTWorkOut(tmp);
+            Leftmost_Inorder(tmp->RPtr, &stack);
+        }
+
     }
 }
 
@@ -306,10 +331,11 @@ void Leftmost_Postorder (tBTNodePtr ptr, tStackP *StackP, tStackB *StackB) {
 ** a souèasnì do zásobníku bool hodnot ukládáme informaci, zda byl uzel
 ** nav¹tíven poprvé a ¾e se tedy je¹tì nemá zpracovávat. 
 **/
-
-	
-	
-	 solved = FALSE;		  /* V pøípadì øe¹ení sma¾te tento øádek! */	
+    while(ptr != NULL){
+        SPushP(StackP, ptr);
+        SPushB(StackB, TRUE);
+        ptr = ptr -> LPtr;
+    }
 }
 
 void BTPostorder (tBTNodePtr RootPtr)	{
@@ -322,7 +348,25 @@ void BTPostorder (tBTNodePtr RootPtr)	{
     if((RootPtr)==NULL)
         return;
     else{
-        //TODO something here
+        tStackP stackP;
+        tStackB stackB;
+        SInitP(&stackP);
+        SInitB(&stackB);
+        tBTNodePtr tmp;
+
+        Leftmost_Postorder(RootPtr, &stackP, &stackB);
+
+        while(!SEmptyP(&stackP)){
+            tmp = STopPopP(&stackP);
+            SPushP(&stackP, tmp);
+            if(STopPopB(&stackB) == TRUE){
+                SPushB(&stackB, FALSE);
+                Leftmost_Postorder(tmp -> RPtr, &stackP, &stackB);
+            } else {
+                tmp = STopPopP(&stackP);
+                BTWorkOut(tmp);
+            }
+        }
     }
 
 }
