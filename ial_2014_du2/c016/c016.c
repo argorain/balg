@@ -80,8 +80,16 @@ void htInit ( tHTable* ptrht ) {
 */
 
 tHTItem* htSearch ( tHTable* ptrht, tKey key ) {
-
- solved = 0; /*v pripade reseni, smazte tento radek!*/
+    tHTItem *tmp;
+    for(int i=0; i< MAX_HTSIZE; i++){
+        tmp=(*ptrht)[i];
+        while(tmp!=NULL){
+            if(tmp->key==key)
+                return tmp;
+            tmp=tmp->ptrnext;
+        }
+    }
+ //solved = 0; /*v pripade reseni, smazte tento radek!*/
 }
 
 /* 
@@ -97,14 +105,19 @@ tHTItem* htSearch ( tHTable* ptrht, tKey key ) {
 **/
 
 void htInsert ( tHTable* ptrht, tKey key, tData data ) {
-    if((*ptrht)[0]==NULL){
-        (*ptrht)[0]= malloc(sizeof(tHTable));
-        (*ptrht)[0]->data=data;
-        (*ptrht)[0]->key=key;
-        (*ptrht)[0]->ptrnext=NULL;
+    tHTItem *tmp;
+    if((tmp=htSearch(ptrht, key))==NULL) {
+        int hash = hashCode(key);
+        int line = hash % (MAX_HTSIZE + 1);
+        tmp = malloc(sizeof(tHTItem));
+        tmp->ptrnext = (*ptrht)[line];
+        tmp->key = key;
+        tmp->data = data;
+        (*ptrht)[line] = tmp;
     }else{
-        //TODO neni to prvni prvek v tabulce
+        tmp->data=data;
     }
+
  //solved = 0; /*v pripade reseni, smazte tento radek!*/
 }
 
@@ -118,8 +131,8 @@ void htInsert ( tHTable* ptrht, tKey key, tData data ) {
 */
 
 tData* htRead ( tHTable* ptrht, tKey key ) {
-
- solved = 0; /*v pripade reseni, smazte tento radek!*/
+    return &(htSearch(ptrht, key)->data);
+ //solved = 0; /*v pripade reseni, smazte tento radek!*/
 }
 
 /*
@@ -133,8 +146,12 @@ tData* htRead ( tHTable* ptrht, tKey key ) {
 */
 
 void htDelete ( tHTable* ptrht, tKey key ) {
-
- solved = 0; /*v pripade reseni, smazte tento radek!*/
+    int hash = hashCode(key);
+    int line = hash % (MAX_HTSIZE + 1);
+    tHTItem *tmp = (*ptrht)[line];
+    (*ptrht)[line]=tmp->ptrnext;
+    free(tmp);
+ //solved = 0; /*v pripade reseni, smazte tento radek!*/
 }
 
 /* TRP s explicitně zřetězenými synonymy.
@@ -143,6 +160,13 @@ void htDelete ( tHTable* ptrht, tKey key ) {
 */
 
 void htClearAll ( tHTable* ptrht ) {
-
- solved = 0; /*v pripade reseni, smazte tento radek!*/
+    tHTItem *tmp, *next;
+    for(int i=0; i< MAX_HTSIZE; i++){
+        while((*ptrht)[i]!=NULL) {
+            tmp = (*ptrht)[i];
+            (*ptrht)[i] = tmp->ptrnext;
+            free(tmp);
+        }
+    }
+ //solved = 0; /*v pripade reseni, smazte tento radek!*/
 }
