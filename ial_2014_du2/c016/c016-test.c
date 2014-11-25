@@ -7,8 +7,6 @@
 #include <math.h>
 #include <stdlib.h>
 
-#include "check.h"
-
 
 tHTItem* UNDEFPTR;
 tHTable* ptrht;
