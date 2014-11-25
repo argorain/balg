@@ -1,12 +1,12 @@
 
-/* Hlavièkovı soubor pro c016.h - Tabulka s Rozptılenımi Polo¾kami,
-**  obsahuje jednak nutné includes a externované promìnné,
-**  ale rovne¾ definici datovıch typù. Tento soubor neupravujte!
-**  Téma:  Tabulka s explicitnì zøetìzenımi synonymy
-**                      První implementace: Petr Pøikryl, prosinec 1994
+/* HlaviÄkovÃ½ soubor pro c016.h - Tabulka s RozptÃ½lenÃ½mi PoloÅ¾kami,
+**  obsahuje jednak nutnÃ© includes a externovanÃ© promÄ›nnÃ©,
+**  ale rovneÅ¾ definici datovÃ½ch typÅ¯. Tento soubor neupravujte!
+**  TÃ©ma:  Tabulka s explicitnÄ› zÅ™etÄ›zenÃ½mi synonymy
+**                      PrvnÃ­ implementace: Petr PÅ™ikryl, prosinec 1994
 **                      Do jazyka C prepsal a upravil: Vaclav Topinka, 2005
-**                      Úpravy: Karel Masaøík, øíjen 2013
-**                      Úpravy: Radek Hranickı, øíjen 2014
+**                      Ãšpravy: Karel MasaÅ™Ã­k, Å™Ã­jen 2013
+**                      Ãšpravy: Radek HranickÃ½, Å™Ã­jen 2014
 **
 ***/
 
@@ -19,39 +19,39 @@
 
 extern int solved;			/* externi promenna pouzivana v testeru */
 
-/* Maximální velikost pole pro implementaci
-   vyhledávací tabulky. Øe¹ené procedury v¹ak
-   vyu¾ívají pouze HTSIZE prvkù pole (viz deklarace této promìnné).
+/* MaximÃ¡lnÃ­ velikost pole pro implementaci
+   vyhledÃ¡vacÃ­ tabulky. Å˜eÅ¡enÃ© procedury vÅ¡ak
+   vyuÅ¾Ã­vajÃ­ pouze HTSIZE prvkÅ¯ pole (viz deklarace tÃ©to promÄ›nnÃ©).
 */
 #define MAX_HTSIZE 101
 
-/* typ klíèe (napøíklad identifikace zbo¾í) */
+/* typ klÃ­Äe (napÅ™Ã­klad identifikace zboÅ¾Ã­) */
 typedef char* tKey;
 
-/* typ obsahu (napøíklad cena zbo¾í) */
+/* typ obsahu (napÅ™Ã­klad cena zboÅ¾Ã­) */
 typedef float tData;
 
-/*Datová polo¾ka TRP s explicitnì øetìzenımi synonymy*/
+/*DatovÃ¡ poloÅ¾ka TRP s explicitnÄ› Å™etÄ›zenÃ½mi synonymy*/
  typedef struct tHTItem{
-	tKey key;				/* klíè  */
+	tKey key;				/* klÃ­Ä  */
 	tData data;				/* obsah */
-	struct tHTItem* ptrnext;	/* ukazatel na dal¹í synonymum */
+	struct tHTItem* ptrnext;	/* ukazatel na dalÅ¡Ã­ synonymum */
 } tHTItem;
 
-/* TRP s explicitnì zøetìzenımi synonymy. */
+/* TRP s explicitnÄ› zÅ™etÄ›zenÃ½mi synonymy. */
 typedef tHTItem* tHTable[MAX_HTSIZE];
 
-/* Pro úèely testování je vhodné mít mo¾nost volby velikosti pole,
-   kterım je vyhledávací tabulka implementována. Fyzicky je deklarováno
-   pole o rozmìru MAX_HTSIZE, ale pøi implementaci va¹ich procedur uva¾ujte
-   velikost HTSIZE.  Ve skriptu se pøed voláním øe¹enıch procedur musí
-   objevit pøíkaz HTSIZE N, kde N je velikost po¾adovaného prostoru.
+/* Pro ÃºÄely testovÃ¡nÃ­ je vhodnÃ© mÃ­t moÅ¾nost volby velikosti pole,
+   kterÃ½m je vyhledÃ¡vacÃ­ tabulka implementovÃ¡na. Fyzicky je deklarovÃ¡no
+   pole o rozmÄ›ru MAX_HTSIZE, ale pÅ™i implementaci vaÅ¡ich procedur uvaÅ¾ujte
+   velikost HTSIZE.  Ve skriptu se pÅ™ed volÃ¡nÃ­m Å™eÅ¡enÃ½ch procedur musÃ­
+   objevit pÅ™Ã­kaz HTSIZE N, kde N je velikost poÅ¾adovanÃ©ho prostoru.
    
-   POZOR! Pro správnou funkci TRP musí bıt hodnota této promìnné prvoèíslem.
+   POZOR! Pro sprÃ¡vnou funkci TRP musÃ­ bÃ½t hodnota tÃ©to promÄ›nnÃ© prvoÄÃ­slem.
 */
 extern int HTSIZE;
 
-/* Hlavièky øe¹enıch procedur a funkcí. */
+/* HlaviÄky Å™eÅ¡enÃ½ch procedur a funkcÃ­. */
 
 int hashCode ( tKey key );
 
