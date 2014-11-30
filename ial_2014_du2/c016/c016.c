@@ -159,7 +159,7 @@ void htDelete ( tHTable* ptrht, tKey key ) {
 */
 
 void htClearAll ( tHTable* ptrht ) {
-    tHTItem *tmp, *next;
+    tHTItem *tmp;
     for(int i=0; i< MAX_HTSIZE; i++){       //projde celou tabulku řádek po řádku
         while((*ptrht)[i]!=NULL) {          //projde každý řádek (tj dokud je ptrnext různý od NULL)
             tmp = (*ptrht)[i];

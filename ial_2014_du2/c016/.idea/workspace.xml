@@ -29,10 +29,10 @@
       <file leaf-file-name="c016.c" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/c016.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1350" max-vertical-offset="2655">
-              <caret line="90" column="66" selection-start-line="90" selection-start-column="66" selection-end-line="90" selection-end-column="66" />
+            <state vertical-scroll-proportion="0.7303371" vertical-offset="1765" max-vertical-offset="2655">
+              <caret line="161" column="16" selection-start-line="161" selection-start-column="16" selection-end-line="161" selection-end-column="16" />
               <folding>
-                <marker date="1417340738718" expanded="true" signature="1:76" placeholder="/.../" />
+                <marker date="1417345514251" expanded="true" signature="1:76" placeholder="/.../" />
               </folding>
             </state>
           </provider>
@@ -220,10 +220,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1920" height="1053" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24934107" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24934107" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297062" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -271,7 +271,53 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="100">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1417340738718" expanded="true" signature="1:76" placeholder="/.../" />
+            <marker date="1417345514251" expanded="true" signature="1:76" placeholder="/.../" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/c016-test.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="105" max-vertical-offset="2910">
+          <caret line="7" column="19" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
+          <folding>
+            <element signature="e#74#91#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/c016-test.output">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2100" max-vertical-offset="4395">
+          <caret line="140" column="2" selection-start-line="140" selection-start-column="2" selection-end-line="140" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/c016.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="900" max-vertical-offset="1140">
+          <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+          <folding>
+            <marker date="1414776238000" expanded="true" signature="1:9" placeholder="/.../" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="105" max-vertical-offset="240">
+          <caret line="7" column="10" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/c016.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="100">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1417345514251" expanded="true" signature="1:76" placeholder="/.../" />
           </folding>
         </state>
       </provider>
@@ -317,7 +363,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="615" max-vertical-offset="2655">
           <caret line="41" column="17" selection-start-line="41" selection-start-column="17" selection-end-line="41" selection-end-column="17" />
           <folding>
-            <marker date="1417340738718" expanded="true" signature="1:76" placeholder="/.../" />
+            <marker date="1417345514251" expanded="true" signature="1:76" placeholder="/.../" />
           </folding>
         </state>
       </provider>
@@ -363,7 +409,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="615" max-vertical-offset="2655">
           <caret line="41" column="17" selection-start-line="41" selection-start-column="17" selection-end-line="41" selection-end-column="17" />
           <folding>
-            <marker date="1417340738718" expanded="true" signature="1:76" placeholder="/.../" />
+            <marker date="1417345514251" expanded="true" signature="1:76" placeholder="/.../" />
           </folding>
         </state>
       </provider>
@@ -409,7 +455,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="1245" max-vertical-offset="2310">
           <caret line="83" column="1" selection-start-line="83" selection-start-column="1" selection-end-line="83" selection-end-column="1" />
           <folding>
-            <marker date="1417340738718" expanded="true" signature="1:76" placeholder="/.../" />
+            <marker date="1417345514251" expanded="true" signature="1:76" placeholder="/.../" />
           </folding>
         </state>
       </provider>
@@ -455,7 +501,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="855" max-vertical-offset="2205">
           <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
           <folding>
-            <marker date="1417340738718" expanded="true" signature="1:76" placeholder="/.../" />
+            <marker date="1417345514251" expanded="true" signature="1:76" placeholder="/.../" />
           </folding>
         </state>
       </provider>
@@ -534,10 +580,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/c016.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1350" max-vertical-offset="2655">
-          <caret line="90" column="66" selection-start-line="90" selection-start-column="66" selection-end-line="90" selection-end-column="66" />
+        <state vertical-scroll-proportion="0.7303371" vertical-offset="1765" max-vertical-offset="2655">
+          <caret line="161" column="16" selection-start-line="161" selection-start-column="16" selection-end-line="161" selection-end-column="16" />
           <folding>
-            <marker date="1417340738718" expanded="true" signature="1:76" placeholder="/.../" />
+            <marker date="1417345514251" expanded="true" signature="1:76" placeholder="/.../" />
           </folding>
         </state>
       </provider>
