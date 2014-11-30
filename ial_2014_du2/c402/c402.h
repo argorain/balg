@@ -1,17 +1,17 @@
 
-/* HlaviÄkovÃ½ soubor pro c402.c - nerekurzÃ­vnÃ­ implementace operacÃ­ nad BVS
-obsahuje jednak nutnÃ© knihovny a externÃ­ promÄ›nnÃ©, ale rovnÄ›Å¾ definici datovÃ½ch
-typÅ¯, se kterÃ½mi se pracuje v pÅ™Ã­sluÅ¡nÃ½ch ÃºlohÃ¡ch. Nemodifikovat! */
+/* Hlavièkovı soubor pro c402.c - nerekurzívní implementace operací nad BVS
+obsahuje jednak nutné knihovny a externí promìnné, ale rovnì¾ definici datovıch
+typù, se kterımi se pracuje v pøíslu¹nıch úlohách. Nemodifikovat! */
 
-/* ********************** SOUBOR S HLAVIÄŒKOU ********************** */
+/* ********************** SOUBOR S HLAVIÈKOU ********************** */
 /* ********************** ------------------ ********************** */
 
-/*  PÅ™edmÄ›t: Algoritmy (IAL) - FIT (Fakulta InformaÄnÃ­ch TechnologiÃ­)
-    HlaviÄka pro soubor: c402.c
-    VytvoÅ™il: Martin TuÄek, zÃ¡Å™Ã­ 2005
-    Upravil: Bohuslav KÅ™ena, listopad 2009                           
-    upravil: Karel MasaÅ™Ã­k, Å™Ã­jen 2013                               
-    upravil: Radek HranickÃ½, Å™Ã­jen 2014                              */
+/*  Pøedmìt: Algoritmy (IAL) - FIT (Fakulta Informaèních Technologií)
+    Hlavièka pro soubor: c402.c
+    Vytvoøil: Martin Tuèek, záøí 2005
+    Upravil: Bohuslav Køena, listopad 2009                           
+    upravil: Karel Masaøík, øíjen 2013                               
+    upravil: Radek Hranickı, øíjen 2014                              */
 /* ***************************************************************** */
 
 #include<stdio.h>
@@ -21,23 +21,23 @@ typÅ¯, se kterÃ½mi se pracuje v pÅ™Ã­sluÅ¡nÃ½ch ÃºlohÃ¡ch. Nemodifikovat! */
 
 #define FALSE 0
 #define TRUE 1
-#define MAXSTACK 30                      /* maximÃ¡lnÃ­ poÄet prvkÅ¯ v zÃ¡sobnÃ­ku */
+#define MAXSTACK 30                      /* maximální poèet prvkù v zásobníku */
 
-extern int solved; 			                  /* indikace, zda byla funkce Å™eÅ¡ena */
+extern int solved; 			                  /* indikace, zda byla funkce øe¹ena */
 
 typedef struct tBTNode	{                                      /* uzel stromu */
-    int Cont;                                         /* uÅ¾iteÄnÃ½ obsah uzlu  */
-    struct tBTNode * LPtr;                                  /* levÃ½ podstrom  */
-    struct tBTNode * RPtr; 	  	                            /* pravÃ½ podstrom */
+    int Cont;                                         /* u¾iteènı obsah uzlu  */
+    struct tBTNode * LPtr;                                  /* levı podstrom  */
+    struct tBTNode * RPtr; 	  	                            /* pravı podstrom */
 } *tBTNodePtr;                                     /* ukazatel na uzel stromu */
 
-/* pomocnÃ© zÃ¡sobnÃ­ky */
-typedef struct	{                          /* zÃ¡sobnÃ­k hodnot typu tBTNodePtr */
+/* pomocné zásobníky */
+typedef struct	{                          /* zásobník hodnot typu tBTNodePtr */
     tBTNodePtr a[MAXSTACK];
     int top;
 } tStackP;
 
-typedef struct {                                 /* zÃ¡sobnÃ­k hodnot typu bool */
+typedef struct {                                 /* zásobník hodnot typu bool */
     bool a[MAXSTACK];
     int top;
 } tStackB;

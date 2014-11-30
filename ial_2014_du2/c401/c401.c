@@ -1,40 +1,40 @@
 
 /* c401.c: **********************************************************}
-{* TÃ©ma: RekurzivnÃ­ implementace operacÃ­ nad BVS
-**                                         VytvoÅ™il: Petr PÅ™ikryl, listopad 1994
-**                                         Ãšpravy: Andrea NÄ›mcovÃ¡, prosinec 1995
-**                                                      Petr PÅ™ikryl, duben 1996
-**                                                   Petr PÅ™ikryl, listopad 1997
-**                                  PÅ™evod do jazyka C: Martin TuÄek, Å™Ã­jen 2005
-**                                         Ãšpravy: Bohuslav KÅ™ena, listopad 2009
-**                                         Ãšpravy: Karel MasaÅ™Ã­k, Å™Ã­jen 2013
-**                                         Ãšpravy: Radek HranickÃ½, Å™Ã­jen 2014
+{* Téma: Rekurzivní implementace operací nad BVS
+**                                         Vytvoøil: Petr Pøikryl, listopad 1994
+**                                         Úpravy: Andrea Nìmcová, prosinec 1995
+**                                                      Petr Pøikryl, duben 1996
+**                                                   Petr Pøikryl, listopad 1997
+**                                  Pøevod do jazyka C: Martin Tuèek, øíjen 2005
+**                                         Úpravy: Bohuslav Køena, listopad 2009
+**                                         Úpravy: Karel Masaøík, øíjen 2013
+**                                         Úpravy: Radek Hranický, øíjen 2014
 **
-** Implementujte rekurzivnÃ­m zpÅ¯sobem operace nad binÃ¡rnÃ­m vyhledÃ¡vacÃ­m
-** stromem (BVS; v angliÄtinÄ› BST - Binary Search Tree).
+** Implementujte rekurzivním zpùsobem operace nad binárním vyhledávacím
+** stromem (BVS; v angliètinì BST - Binary Search Tree).
 **
-** KlÃ­Äem uzlu stromu je jeden znak (obecnÄ› jÃ­m mÅ¯Å¾e bÃ½t cokoliv, podle
-** Äeho se vyhledÃ¡vÃ¡). UÅ¾iteÄnÃ½m (vyhledÃ¡vanÃ½m) obsahem je zde integer.
-** Uzly s menÅ¡Ã­m klÃ­Äem leÅ¾Ã­ vlevo, uzly s vÄ›tÅ¡Ã­m klÃ­Äem leÅ¾Ã­ ve stromu
-** vpravo. VyuÅ¾ijte dynamickÃ©ho pÅ™idÄ›lovÃ¡nÃ­ pamÄ›ti.
-** RekurzivnÃ­m zpÅ¯sobem implementujte nÃ¡sledujÃ­cÃ­ funkce:
+** Klíèem uzlu stromu je jeden znak (obecnì jím mù¾e být cokoliv, podle
+** èeho se vyhledává). U¾iteèným (vyhledávaným) obsahem je zde integer.
+** Uzly s men¹ím klíèem le¾í vlevo, uzly s vìt¹ím klíèem le¾í ve stromu
+** vpravo. Vyu¾ijte dynamického pøidìlování pamìti.
+** Rekurzivním zpùsobem implementujte následující funkce:
 **
-**   BSTInit ...... inicializace vyhledÃ¡vacÃ­ho stromu
-**   BSTSearch .... vyhledÃ¡vÃ¡nÃ­ hodnoty uzlu zadanÃ©ho klÃ­Äem
-**   BSTInsert .... vklÃ¡dÃ¡nÃ­ novÃ© hodnoty
-**   BSTDelete .... zruÅ¡enÃ­ uzlu se zadanÃ½m klÃ­Äem
-**   BSTDispose ... zruÅ¡enÃ­ celÃ©ho stromu
+**   BSTInit ...... inicializace vyhledávacího stromu
+**   BSTSearch .... vyhledávání hodnoty uzlu zadaného klíèem
+**   BSTInsert .... vkládání nové hodnoty
+**   BSTDelete .... zru¹ení uzlu se zadaným klíèem
+**   BSTDispose ... zru¹ení celého stromu
 **
-** ADT BVS je reprezentovÃ¡n koÅ™enovÃ½m ukazatelem stromu (typ tBSTNodePtr).
-** Uzel stromu (struktura typu tBSTNode) obsahuje klÃ­Ä (typu char), podle
-** kterÃ©ho se ve stromu vyhledÃ¡vÃ¡, vlastnÃ­ obsah uzlu (pro jednoduchost
-** typu int) a ukazatel na levÃ½ a pravÃ½ podstrom (LPtr a RPtr). PÅ™esnou definici typÅ¯ 
+** ADT BVS je reprezentován koøenovým ukazatelem stromu (typ tBSTNodePtr).
+** Uzel stromu (struktura typu tBSTNode) obsahuje klíè (typu char), podle
+** kterého se ve stromu vyhledává, vlastní obsah uzlu (pro jednoduchost
+** typu int) a ukazatel na levý a pravý podstrom (LPtr a RPtr). Pøesnou definici typù 
 ** naleznete v souboru c401.h.
 **
-** Pozor! Je tÅ™eba sprÃ¡vnÄ› rozliÅ¡ovat, kdy pouÅ¾Ã­t dereferenÄnÃ­ operÃ¡tor *
-** (typicky pÅ™i modifikaci) a kdy budeme pracovat pouze se samotnÃ½m ukazatelem 
-** (napÅ™. pÅ™i vyhledÃ¡vÃ¡nÃ­). V tomto pÅ™Ã­kladu vÃ¡m napovÃ­ prototypy funkcÃ­.
-** Pokud pracujeme s ukazatelem na ukazatel, pouÅ¾ijeme dereferenci.
+** Pozor! Je tøeba správnì rozli¹ovat, kdy pou¾ít dereferenèní operátor *
+** (typicky pøi modifikaci) a kdy budeme pracovat pouze se samotným ukazatelem 
+** (napø. pøi vyhledávání). V tomto pøíkladu vám napoví prototypy funkcí.
+** Pokud pracujeme s ukazatelem na ukazatel, pou¾ijeme dereferenci.
 **/
 
 #include "c401.h"
@@ -42,50 +42,50 @@ int solved;
 
 void BSTInit (tBSTNodePtr *RootPtr) {
 /*   -------
-** Funkce provede poÄÃ¡teÄnÃ­ inicializaci stromu pÅ™ed jeho prvnÃ­m pouÅ¾itÃ­m.
+** Funkce provede poèáteèní inicializaci stromu pøed jeho prvním pou¾itím.
 **
-** OvÄ›Å™it, zda byl jiÅ¾ strom pÅ™edanÃ½ pÅ™es RootPtr inicializovÃ¡n, nelze,
-** protoÅ¾e pÅ™ed prvnÃ­ inicializacÃ­ mÃ¡ ukazatel nedefinovanou (tedy libovolnou)
-** hodnotu. ProgramÃ¡tor vyuÅ¾Ã­vajÃ­cÃ­ ADT BVS tedy musÃ­ zajistit, aby inicializace
-** byla volÃ¡na pouze jednou, a to pÅ™ed vlastnÃ­ pracÃ­ s BVS. ProvedenÃ­
-** inicializace nad neprÃ¡zdnÃ½m stromem by totiÅ¾ mohlo vÃ©st ke ztrÃ¡tÄ› pÅ™Ã­stupu
-** k dynamicky alokovanÃ© pamÄ›ti (tzv. "memory leak").
+** Ovìøit, zda byl ji¾ strom pøedaný pøes RootPtr inicializován, nelze,
+** proto¾e pøed první inicializací má ukazatel nedefinovanou (tedy libovolnou)
+** hodnotu. Programátor vyu¾ívající ADT BVS tedy musí zajistit, aby inicializace
+** byla volána pouze jednou, a to pøed vlastní prací s BVS. Provedení
+** inicializace nad neprázdným stromem by toti¾ mohlo vést ke ztrátì pøístupu
+** k dynamicky alokované pamìti (tzv. "memory leak").
 **	
-** VÅ¡imnÄ›te si, Å¾e se v hlaviÄce objevuje typ ukazatel na ukazatel.	
-** Proto je tÅ™eba pÅ™i pÅ™iÅ™azenÃ­ pÅ™es RootPtr pouÅ¾Ã­t dereferenÄnÃ­ operÃ¡tor *.
-** Ten bude pouÅ¾it i ve funkcÃ­ch BSTDelete, BSTInsert a BSTDispose.
+** V¹imnìte si, ¾e se v hlavièce objevuje typ ukazatel na ukazatel.	
+** Proto je tøeba pøi pøiøazení pøes RootPtr pou¾ít dereferenèní operátor *.
+** Ten bude pou¾it i ve funkcích BSTDelete, BSTInsert a BSTDispose.
 **/
 	
 
-    RootPtr=NULL;
+    (*RootPtr)=NULL;
 	
 }	
 
 int BSTSearch (tBSTNodePtr RootPtr, char K, int *Content)	{
 /*  ---------
-** Funkce vyhledÃ¡ uzel v BVS s klÃ­Äem K.
+** Funkce vyhledá uzel v BVS s klíèem K.
 **
-** Pokud je takovÃ½ nalezen, vracÃ­ funkce hodnotu TRUE a v promÄ›nnÃ© Content se
-** vracÃ­ obsah pÅ™Ã­sluÅ¡nÃ©ho uzlu.Â´Pokud pÅ™Ã­sluÅ¡nÃ½ uzel nenÃ­ nalezen, vracÃ­ funkce
-** hodnotu FALSE a obsah promÄ›nnÃ© Content nenÃ­ definovÃ¡n (nic do nÃ­ proto
-** nepÅ™iÅ™azujte).
+** Pokud je takový nalezen, vrací funkce hodnotu TRUE a v promìnné Content se
+** vrací obsah pøíslu¹ného uzlu.´Pokud pøíslu¹ný uzel není nalezen, vrací funkce
+** hodnotu FALSE a obsah promìnné Content není definován (nic do ní proto
+** nepøiøazujte).
 **
-** PÅ™i vyhledÃ¡vÃ¡nÃ­ v binÃ¡rnÃ­m stromu bychom typicky pouÅ¾ili cyklus ukonÄenÃ½
-** testem dosaÅ¾enÃ­ listu nebo nalezenÃ­ uzlu s klÃ­Äem K. V tomto pÅ™Ã­padÄ› ale
-** problÃ©m Å™eÅ¡te rekurzivnÃ­m volÃ¡nÃ­ tÃ©to funkce, pÅ™iÄemÅ¾ nedeklarujte Å¾Ã¡dnou
+** Pøi vyhledávání v binárním stromu bychom typicky pou¾ili cyklus ukonèený
+** testem dosa¾ení listu nebo nalezení uzlu s klíèem K. V tomto pøípadì ale
+** problém øe¹te rekurzivním volání této funkce, pøièem¾ nedeklarujte ¾ádnou
 ** pomocnou funkci.
 **/
 
-    if(RootPtr!=NULL) {
-        if(RootPtr->Key == K){
+    if(RootPtr!=NULL) {                                         //dokud není koøen null, hledáme
+        if(RootPtr->Key == K){                                  //sedí klíèe? kdy¾ ano, vracíme content a TRUE
             *Content = RootPtr->BSTNodeCont;
             return TRUE;
-        }else{
+        }else{                                                  //kdy¾ ne, noøíme se do hloubky
 
-            if (RootPtr->Key>K)
-                return BSTSearch(RootPtr->LPtr, K, Content);
+            if (RootPtr->Key>K)                                 //je ná¹ klíè vìt¹í ne¾ hledaný?
+                return BSTSearch(RootPtr->LPtr, K, Content);    //je. Hledáme vlevo
             else
-                return BSTSearch(RootPtr->RPtr, K, Content);
+                return BSTSearch(RootPtr->RPtr, K, Content);    //není. Hledáme vpravo
         }
     }
 	return FALSE;
@@ -94,30 +94,30 @@ int BSTSearch (tBSTNodePtr RootPtr, char K, int *Content)	{
 
 void BSTInsert (tBSTNodePtr* RootPtr, char K, int Content)	{	
 /*   ---------
-** VloÅ¾Ã­ do stromu RootPtr hodnotu Content s klÃ­Äem K.
+** Vlo¾í do stromu RootPtr hodnotu Content s klíèem K.
 **
-** Pokud jiÅ¾ uzel se zadanÃ½m klÃ­Äem ve stromu existuje, bude obsah uzlu
-** s klÃ­Äem K nahrazen novou hodnotou. Pokud bude do stromu vloÅ¾en novÃ½
-** uzel, bude vloÅ¾en vÅ¾dy jako list stromu.
+** Pokud ji¾ uzel se zadaným klíèem ve stromu existuje, bude obsah uzlu
+** s klíèem K nahrazen novou hodnotou. Pokud bude do stromu vlo¾en nový
+** uzel, bude vlo¾en v¾dy jako list stromu.
 **
-** Funkci implementujte rekurzivnÄ›. Nedeklarujte Å¾Ã¡dnou pomocnou funkci.
+** Funkci implementujte rekurzivnì. Nedeklarujte ¾ádnou pomocnou funkci.
 **
-** RekurzivnÃ­ implementace je mÃ©nÄ› efektivnÃ­, protoÅ¾e se pÅ™i kaÅ¾dÃ©m
-** rekurzivnÃ­m zanoÅ™enÃ­ uklÃ¡dÃ¡ na zÃ¡sobnÃ­k obsah uzlu (zde integer).
-** NerekurzivnÃ­ varianta by v tomto pÅ™Ã­padÄ› byla efektivnÄ›jÅ¡Ã­ jak z hlediska
-** rychlosti, tak z hlediska pamÄ›Å¥ovÃ½ch nÃ¡rokÅ¯. Zde jde ale o Å¡kolnÃ­
-** pÅ™Ã­klad, na kterÃ©m si chceme ukÃ¡zat eleganci rekurzivnÃ­ho zÃ¡pisu.
+** Rekurzivní implementace je ménì efektivní, proto¾e se pøi ka¾dém
+** rekurzivním zanoøení ukládá na zásobník obsah uzlu (zde integer).
+** Nerekurzivní varianta by v tomto pøípadì byla efektivnìj¹í jak z hlediska
+** rychlosti, tak z hlediska pamì»ových nárokù. Zde jde ale o ¹kolní
+** pøíklad, na kterém si chceme ukázat eleganci rekurzivního zápisu.
 **/
 
-    if((*RootPtr)!=NULL) {
-        if((*RootPtr)->Key==K){
-            (*RootPtr)->BSTNodeCont=Content;
-        }else if((*RootPtr)->Key>K){
+    if((*RootPtr)!=NULL) {                              //prohledáme strom a¾ na konec
+        if((*RootPtr)->Key==K){                         //na¹li jsme uzel se stejným klíèem
+            (*RootPtr)->BSTNodeCont=Content;            //pøepí¹eme jeho obsah a konec
+        }else if((*RootPtr)->Key>K){                    //nebo jdeme vlevo
             BSTInsert(&((*RootPtr)->LPtr), K, Content);
-        }else{
+        }else{                                          //nebo vpravo
             BSTInsert(&((*RootPtr)->RPtr), K, Content);
         }
-    }else{
+    }else{                                              //na konci vyrobíme nový uzel
         (*RootPtr) = malloc(sizeof(struct tBSTNode));
         (*RootPtr)->Key=K;
         (*RootPtr)->BSTNodeCont=Content;
@@ -129,89 +129,89 @@ void BSTInsert (tBSTNodePtr* RootPtr, char K, int Content)	{
 
 void ReplaceByRightmost (tBSTNodePtr PtrReplaced, tBSTNodePtr *RootPtr) {
 /*   ------------------
-** PomocnÃ¡ funkce pro vyhledÃ¡nÃ­, pÅ™esun a uvolnÄ›nÃ­ nejpravÄ›jÅ¡Ã­ho uzlu.
+** Pomocná funkce pro vyhledání, pøesun a uvolnìní nejpravìj¹ího uzlu.
 **
-** Ukazatel PtrReplaced ukazuje na uzel, do kterÃ©ho bude pÅ™esunuta hodnota
-** nejpravÄ›jÅ¡Ã­ho uzlu v podstromu, kterÃ½ je urÄen ukazatelem RootPtr.
-** PÅ™edpoklÃ¡dÃ¡ se, Å¾e hodnota ukazatele RootPtr nebude NULL (zajistÄ›te to
-** testovÃ¡nÃ­m pÅ™ed volÃ¡nÃ­ tÃ©to funkce). Tuto funkci implementujte rekurzivnÄ›. 
+** Ukazatel PtrReplaced ukazuje na uzel, do kterého bude pøesunuta hodnota
+** nejpravìj¹ího uzlu v podstromu, který je urèen ukazatelem RootPtr.
+** Pøedpokládá se, ¾e hodnota ukazatele RootPtr nebude NULL (zajistìte to
+** testováním pøed volání této funkce). Tuto funkci implementujte rekurzivnì. 
 **
-** Tato pomocnÃ¡ funkce bude pouÅ¾ita dÃ¡le. NeÅ¾ ji zaÄnete implementovat,
-** pÅ™eÄtÄ›te si komentÃ¡Å™ k funkci BSTDelete(). 
+** Tato pomocná funkce bude pou¾ita dále. Ne¾ ji zaènete implementovat,
+** pøeètìte si komentáø k funkci BSTDelete(). 
 **/
 	tBSTNodePtr temp;
-	if((*RootPtr)->RPtr==NULL){
-        PtrReplaced->Key=(*RootPtr)->Key;
-        PtrReplaced->BSTNodeCont=(*RootPtr)->BSTNodeCont;
-        temp=(*RootPtr);
-        (*RootPtr)=(*RootPtr)->LPtr;
-        free(temp);
+	if((*RootPtr)->RPtr==NULL){                                     //hledáme a¾ úplnì doprava
+        PtrReplaced->Key=(*RootPtr)->Key;                           //nahradíme klíè
+        PtrReplaced->BSTNodeCont=(*RootPtr)->BSTNodeCont;           //nahradíme obsah
+        temp=(*RootPtr);                                            //ulo¾íme si souèasný uzel
+        (*RootPtr)=(*RootPtr)->LPtr;                                //pøepojíme levou vìtev
+        free(temp);                                                 //a uvolníme
     }else{
-        ReplaceByRightmost(PtrReplaced, &((*RootPtr)->RPtr));
+        ReplaceByRightmost(PtrReplaced, &((*RootPtr)->RPtr));       //a kdy¾ nejsme je¹tì uplnì napravo, noøíme se dál
     }
 		
-	// solved = FALSE;		  /* V pÅ™Ã­padÄ› Å™eÅ¡enÃ­ smaÅ¾te tento Å™Ã¡dek! */
+	// solved = FALSE;		  /* V pøípadì øe¹ení sma¾te tento øádek! */
 	
 }
 
 void BSTDelete (tBSTNodePtr *RootPtr, char K) 		{
 /*   ---------
-** ZruÅ¡Ã­ uzel stromu, kterÃ½ obsahuje klÃ­Ä K.
+** Zru¹í uzel stromu, který obsahuje klíè K.
 **
-** Pokud uzel se zadanÃ½m klÃ­Äem neexistuje, nedÄ›lÃ¡ funkce nic. 
-** Pokud mÃ¡ ruÅ¡enÃ½ uzel jen jeden podstrom, pak jej zdÄ›dÃ­ otec ruÅ¡enÃ©ho uzlu.
-** Pokud mÃ¡ ruÅ¡enÃ½ uzel oba podstromy, pak je ruÅ¡enÃ½ uzel nahrazen nejpravÄ›jÅ¡Ã­m
-** uzlem levÃ©ho podstromu. Pozor! NejpravÄ›jÅ¡Ã­ uzel nemusÃ­ bÃ½t listem.
+** Pokud uzel se zadaným klíèem neexistuje, nedìlá funkce nic. 
+** Pokud má ru¹ený uzel jen jeden podstrom, pak jej zdìdí otec ru¹eného uzlu.
+** Pokud má ru¹ený uzel oba podstromy, pak je ru¹ený uzel nahrazen nejpravìj¹ím
+** uzlem levého podstromu. Pozor! Nejpravìj¹í uzel nemusí být listem.
 **
-** Tuto funkci implementujte rekurzivnÄ› s vyuÅ¾itÃ­m dÅ™Ã­ve deklarovanÃ©
-** pomocnÃ© funkce ReplaceByRightmost.
+** Tuto funkci implementujte rekurzivnì s vyu¾itím døíve deklarované
+** pomocné funkce ReplaceByRightmost.
 **/
 	tBSTNodePtr temp;
-    if((*RootPtr)==NULL)
+    if((*RootPtr)==NULL)                                        //není co mazat
         return;
-    if((*RootPtr)->Key>K){
+    if((*RootPtr)->Key>K){                                      //nesedí klíè, pokraèujeme vlevo
         BSTDelete(&((*RootPtr)->LPtr), K);
-    }else if((*RootPtr)->Key<K){
+    }else if((*RootPtr)->Key<K){                                //nebo vpravo
         BSTDelete(&((*RootPtr)->RPtr), K);
-    }else{
-        if((*RootPtr)->LPtr==NULL){
+    }else{                                                      //klíè sedí
+        if((*RootPtr)->LPtr==NULL){                             //vlevo nic není, tak pøepojíme pravou vìtev a uvolníme pamì»
             temp=(*RootPtr);
             (*RootPtr)=(*RootPtr)->RPtr;
             free(temp);
-        }else if((*RootPtr)->RPtr==NULL) {
+        }else if((*RootPtr)->RPtr==NULL) {                      //vice versa
             temp = (*RootPtr);
             (*RootPtr) = (*RootPtr)->LPtr;
             free(temp);
-        }else{
+        }else{                                                  //na obou stranách nìco je, tak voláme replace
             ReplaceByRightmost(*RootPtr, &((*RootPtr)->LPtr));
         }
     }
 	
 	
-	 //solved = FALSE;		  /* V pÅ™Ã­padÄ› Å™eÅ¡enÃ­ smaÅ¾te tento Å™Ã¡dek! */
+	 //solved = FALSE;		  /* V pøípadì øe¹ení sma¾te tento øádek! */
 
 } 
 
 void BSTDispose (tBSTNodePtr *RootPtr) {	
 /*   ----------
-** ZruÅ¡Ã­ celÃ½ binÃ¡rnÃ­ vyhledÃ¡vacÃ­ strom a korektnÄ› uvolnÃ­ pamÄ›Å¥.
+** Zru¹í celý binární vyhledávací strom a korektnì uvolní pamì».
 **
-** Po zruÅ¡enÃ­ se bude BVS nachÃ¡zet ve stejnÃ©m stavu, jako se nachÃ¡zel po
-** inicializaci. Tuto funkci implementujte rekurzivnÄ› bez deklarovÃ¡nÃ­ pomocnÃ©
+** Po zru¹ení se bude BVS nacházet ve stejném stavu, jako se nacházel po
+** inicializaci. Tuto funkci implementujte rekurzivnì bez deklarování pomocné
 ** funkce.
 **/
-	if((*RootPtr)!=NULL) {
-        tBSTNodePtr LPtr = (*RootPtr)->LPtr;
+	if((*RootPtr)!=NULL) {                      //dokud je co, mazej
+        tBSTNodePtr LPtr = (*RootPtr)->LPtr;    //ulo¾íme si oba podstromy
         tBSTNodePtr RPtr = (*RootPtr)->RPtr;
 
 
 
-        if (LPtr != NULL)
+        if (LPtr != NULL)                       //a pokud není null, mazáme oba podstromy
             BSTDispose(&LPtr);
         if (RPtr != NULL)
             BSTDispose(&RPtr);
 
-        free((*RootPtr));
+        free((*RootPtr));                       //a nakonec uvolníme i tento uzel a pøepí¹eme ptr na null
         (*RootPtr)=NULL;
     }
 }

@@ -1,19 +1,19 @@
 
-/* HlaviÄkovÃ½ soubor pro c401.c - rekurzÃ­vnÃ­ implementace operaci nad BVS,
-obsahuje jednak nutnÃ© knihovny a externÃ­ promÄ›nnÃ©, ale rovnÄ›Å¾ 
-definici datovÃ½ch typÅ¯, se kterÃ½mi se pracuje v jdenotlivÃ½ch
-funkcÃ­ch. Nemodifikovat! */
+/* Hlavièkovı soubor pro c401.c - rekurzívní implementace operaci nad BVS,
+obsahuje jednak nutné knihovny a externí promìnné, ale rovnì¾ 
+definici datovıch typù, se kterımi se pracuje v jdenotlivıch
+funkcích. Nemodifikovat! */
 
-/* ********************** SOUBOR S HLAVIÄŒKOU ********************** */
+/* ********************** SOUBOR S HLAVIÈKOU ********************** */
 /* ********************** ------------------ ********************** */
 
-/*  vytvoÅ™il: Martin TuÄek
-    pÅ™edmÄ›t: Algoritmy (IAL) - FIT (Fakulta Informacnich TechnologiÃ­)
+/*  vytvoøil: Martin Tuèek
+    pøedmìt: Algoritmy (IAL) - FIT (Fakulta Informacnich Technologií)
     hlavicka pro soubor: c401.c
-    datum: zÃ¡Å™Ã­ 2005
-    upravil: Bohuslav KÅ™ena, listopad 2009
-    upravil: Karel MasaÅ™Ã­k, Å™Ã­jen 2013                               
-    upravil: Radek HranickÃ½, Å™Ã­jen 2014                              */
+    datum: záøí 2005
+    upravil: Bohuslav Køena, listopad 2009
+    upravil: Karel Masaøík, øíjen 2013                               
+    upravil: Radek Hranickı, øíjen 2014                              */
 /* ***************************************************************** */
 
 #include<stdio.h>
@@ -23,18 +23,18 @@ funkcÃ­ch. Nemodifikovat! */
 #define TRUE 1
 #define FALSE 0
 
-extern int solved;                        /* indikace, zda byla funkce Å™eÅ¡ena */
+extern int solved;                        /* indikace, zda byla funkce øe¹ena */
 
 /* uzel stromu */
                                                                                                             
 typedef struct tBSTNode {
-	char Key;			                                                      /* klÃ­Ä */
-	int BSTNodeCont;                                            /* uÅ¾iteÄnÃ½ obsah uzlu */
-	struct tBSTNode * LPtr;                                    /* levÃ½ podstrom */
-	struct tBSTNode * RPtr;                                   /* pravÃ½ podstrom */
+	char Key;			                                                      /* klíè */
+	int BSTNodeCont;                                            /* u¾iteènı obsah uzlu */
+	struct tBSTNode * LPtr;                                    /* levı podstrom */
+	struct tBSTNode * RPtr;                                   /* pravı podstrom */
 } *tBSTNodePtr;	
 
-/* prototypy funkcÃ­ */
+/* prototypy funkcí */
 
 void BSTInit   (tBSTNodePtr *);
 int BSTSearch  (tBSTNodePtr, char, int *);
